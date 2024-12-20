@@ -340,12 +340,16 @@ while True:
     print(Fore.GREEN +   '   ~ south america')
     print(Fore.BLUE +   '   ~ oceania')
 
+    print(Fore.YELLOW)
+    print('~ find a country')
+
     print(Fore.MAGENTA)
     print('~ options')
 
     print(Fore.RED)
     print('~ quit')
 
+    print(Fore.YELLOW)
     userInput = input('~~> ').lower()
 
     match userInput:
@@ -370,6 +374,40 @@ while True:
         case 'oceania':
 
             print('\033c', end='') # clear terminal
+        case 'find':
+            print(Fore.CYAN)
+            print('please enter a country')
+            userInput = input('~~> ')
+
+            print('')
+            if userInput in AFRICA or userInput in AFRICA_ALT:
+                print(Fore.RED + 'this country is in africa')
+            if userInput in ASIA or userInput in ASIA_ALT:
+                print(Fore.CYAN + 'this country is in asia')
+            if userInput in EUROPE or userInput in EUROPE_ALT:
+                print(Fore.MAGENTA + 'this country is in europe')
+            if userInput in NORTH_AMERICA or userInput in NORTH_AMERICA_ALT:
+                print(Fore.YELLOW + 'this country is in north america')
+            if userInput in SOUTH_AMERICA:
+                print(Fore.GREEN + 'this country is in south america')
+            if userInput in OCEANIA:
+                print(Fore.BLUE + 'this country is in oceania')
+            if userInput in OBSERVER_STATES or userInput in OBSERVER_STATES_ALT:
+                print(Fore.BLUE + 'this is a U.N. observer state')
+            if userInput in OTHER_DISPUTED_TERRITORIES:
+                print(Fore.YELLOW + 'this is a disputed territory')
+            if userInput in UNRECOGNISED_TERRITORIES or userInput in UNRECOGNISED_TERRITORIES_ALT:
+                print(Fore.RED + 'this is an unrecognised territory')
+
+            if userInput in WORLD or userInput in WORLD_ALT:
+                print(Fore.GREEN + 'this is a U.N. recognised country')
+            elif not (userInput in OBSERVER_STATES or userInput in OBSERVER_STATES_ALT or userInput in OTHER_DISPUTED_TERRITORIES or userInput in UNRECOGNISED_TERRITORIES or userInput in UNRECOGNISED_TERRITORIES_ALT):
+                print(Fore.RED + 'this is not a country!')
+            
+            print(Fore.YELLOW)
+            input(Fore.CYAN + '~~> ')            
+
+            print('\033c', end='') # clear terminal
         case 'options' | 'settings':
 
             print('\033c', end='') # clear terminal
@@ -377,27 +415,3 @@ while True:
             sys.exit(0)
         case _: # invalid input
             call_error(userInput)
-
-# userInput = input('type a country: ')
-# if userInput in AFRICA or userInput in AFRICA_ALT:
-#     print('this country is in AFRICA')
-# if userInput in ASIA or userInput in ASIA_ALT:
-#     print('this country is in ASIA')
-# if userInput in EUROPE or userInput in EUROPE_ALT:
-#     print('this country is in EUROPE')
-# if userInput in NORTH_AMERICA or userInput in NORTH_AMERICA_ALT:
-#     print('this country is in NORTH AMERICA')
-# if userInput in SOUTH_AMERICA:
-#     print('this country is in SOUTH AMERICA')
-# if userInput in OCEANIA:
-#     print('this country is in OCEANIA')
-# if userInput in OBSERVER_STATES or userInput in OBSERVER_STATES_ALT:
-#     print('this is a U.N. observer state')
-# if userInput in OTHER_DISPUTED_TERRITORIES:
-#     print('this is a disputed territory')
-# if userInput in UNRECOGNISED_TERRITORIES or userInput in UNRECOGNISED_TERRITORIES_ALT:
-#     print('this is an unrecognised territory')
-# if userInput in WORLD or userInput in WORLD_ALT:
-#     print('this is a U.N. recognised country')
-# else:
-#     print('it is not a U.N. recognised country')
