@@ -315,6 +315,8 @@ def call_error(param, errorType='none', minR=0, maxR=0):
     match errorType:
         case 'does_not_exist':
             print(f'{err} does not exist yet. Please try again later.')
+        case 'not_a_country':
+            print(f'{err} is not a country. Did you misspell it?')
         case 'range':
             print(f'{err} is not a valid input. You must input a number between {minR} and {maxR}. Please try again')
         case _:
@@ -736,20 +738,23 @@ def quiz(param):
         print(Fore.GREEN)
         for i in range(1, len(listed_countries), 2):
             # countries not shown on the map are labelled
-            if i in INDEXES_ON_MAP:
+            if listed_indexes[i] in INDEXES_ON_MAP:
                 print(f'~ {listed_countries[i-1]}   \t\t\t\t', end='')
             else:
-                print(f'~ {listed_countries[i-1]}   (not shown on map) \t', end='')
+                print(f'~ {listed_countries[i-1]}   (not shown on map)\t', end='')
             
             # countries not shown on the map are labelled
-            if i+1 in INDEXES_ON_MAP:
+            if listed_indexes[i+1] in INDEXES_ON_MAP:
                 print(f'~ {listed_countries[i]}')
             else:
                 print(f'~ {listed_countries[i]} (not shown on map)')
         
         # prints remainder if odd number of guessed countries
         if len(listed_countries) % 2 == 1:
-            print(f'~ {listed_countries[-1]}')
+            if listed_indexes[-1] in INDEXES_ON_MAP:
+                print(f'~ {listed_countries[-1]}')
+            else:
+                print(f'~ {listed_countries[-1]} (not shown on map)')
         
         print(Fore.MAGENTA)
         print(f'{len(listed_countries)}/{len(country_set)}') # shows how many countries you have guessed correctly
