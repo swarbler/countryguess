@@ -2,6 +2,14 @@ import time, random, sys
 from colorama import Fore, Back
 from art import *
 
+
+#* declares variables *#
+
+show_observer_states = True
+show_disputed_territories = True
+show_unrecognised_territories = True
+
+
 #* declares country lists *#
 
 # african countries
@@ -333,15 +341,11 @@ def fill_list(param=[' '], fill='#'):
     
     return filledList
 
-def africa_map():
-    algeria_on = True
-    disputed_territories = True
-    unrecognised_territories = True
-
+def africa_map(finished_countries):
     morocco = [
         ' ',
         ' ',
-        '__' if disputed_territories else '  ',
+        '__' if show_disputed_territories else '  ',
         '  _',
         '  ',
         '__'
@@ -555,87 +559,87 @@ def africa_map():
     ]
     lesotho = ['[]']
 
-    if algeria_on and not disputed_territories: # morocco w/ western sahara
+    if finished_countries[0] and not show_disputed_territories: # morocco w/ western sahara
         morocco = fill_list(morocco)
-    elif algeria_on and disputed_territories: # morocco w/o western sahara
+    elif finished_countries[0] and show_disputed_territories: # morocco w/o western sahara
         morocco[:3] = fill_list(morocco[:3])
-    if algeria_on and disputed_territories: # western sahara
+    if finished_countries[1] and show_disputed_territories: # western sahara
         morocco[3:6] = fill_list(morocco[3:6], '%')
-    if algeria_on: # algeria
+    if finished_countries[2]: # algeria
         algeria = fill_list(algeria)
-    if algeria_on: # tunisia
+    if finished_countries[3]: # tunisia
         tunisia = fill_list(tunisia)
-    if algeria_on: # libya
+    if finished_countries[4]: # libya
         libya = fill_list(libya)
-    if algeria_on: # egypt
+    if finished_countries[5]: # egypt
         egypt = fill_list(egypt)
-    if algeria_on: # mauritania
+    if finished_countries[6]: # mauritania
         mauritania = fill_list(mauritania)
-    if algeria_on: # senegal
+    if finished_countries[7]: # senegal
         senegal = fill_list(senegal)
-    if algeria_on: # mali
+    if finished_countries[8]: # mali
         mali = fill_list(mali)
-    if algeria_on: # niger
+    if finished_countries[9]: # niger
         niger = fill_list(niger)
-    if algeria_on: # nigeria
+    if finished_countries[10]: # nigeria
         nigeria = fill_list(nigeria)
-    if algeria_on: # chad
+    if finished_countries[11]: # chad
         chad = fill_list(chad)
-    if algeria_on: # sudan
+    if finished_countries[12]: # sudan
         sudan = fill_list(sudan)
-    if algeria_on: # south sudan
+    if finished_countries[13]: # south sudan
         south_sudan = fill_list(south_sudan)
-    if algeria_on: # ethiopia
+    if finished_countries[14]: # ethiopia
         ethiopia = fill_list(ethiopia)
-    if algeria_on and not unrecognised_territories: # somalia w/ somaliland
+    if finished_countries[15] and not show_unrecognised_territories: # somalia w/ somaliland
         somalia = fill_list(somalia)
-    elif algeria_on and unrecognised_territories: # somaliland w/o somaliland
+    elif finished_countries[15] and show_unrecognised_territories: # somaliland w/o somaliland
         somalia[2:5] = fill_list(somalia[2:5])
-    if algeria_on and unrecognised_territories: # somaliland
+    if finished_countries[16] and show_unrecognised_territories: # somaliland
         somalia[:2] = fill_list(somalia[:2], '%')
-    if algeria_on: # sierra leone
+    if finished_countries[17]: # sierra leone
         sierra_leone = fill_list(sierra_leone)
-    if algeria_on: # liberia
+    if finished_countries[18]: # liberia
         liberia = fill_list(liberia)
-    if algeria_on: # cote d' ivoire
+    if finished_countries[19]: # cote d' ivoire
         cote_divoire = fill_list(cote_divoire)
-    if algeria_on: # guinea
+    if finished_countries[20]: # guinea
         guinea = fill_list(guinea)
-    if algeria_on: # togo
+    if finished_countries[21]: # togo
         togo = fill_list(togo)
-    if algeria_on: # benin
+    if finished_countries[22]: # benin
         benin = fill_list(benin)
-    if algeria_on: # ghana
+    if finished_countries[23]: # ghana
         ghana = fill_list(ghana)
-    if algeria_on: # cameroon
+    if finished_countries[24]: # cameroon
         cameroon = fill_list(cameroon)
-    if algeria_on: # central african republic
+    if finished_countries[25]: # central african republic
         central_african_rep = fill_list(central_african_rep)
-    if algeria_on: # kenya
+    if finished_countries[26]: # kenya
         kenya = fill_list(kenya)
-    if algeria_on: # gabon
+    if finished_countries[27]: # gabon
         gabon = fill_list(gabon)
-    if algeria_on: # republic of congo
+    if finished_countries[28]: # republic of congo
         rep_of_congo = fill_list(rep_of_congo)
-    if algeria_on: # democratic republic of congo
+    if finished_countries[29]: # democratic republic of congo
         dem_rep_of_congo = fill_list(dem_rep_of_congo)
-    if algeria_on: # tanzania
+    if finished_countries[30]: # tanzania
         tanzania = fill_list(tanzania)
-    if algeria_on: # angola
+    if finished_countries[31]: # angola
         angola = fill_list(angola)
-    if algeria_on: # tanzania
+    if finished_countries[32]: # tanzania
         zambia = fill_list(zambia)
-    if algeria_on: # mozambique
+    if finished_countries[33]: # mozambique
         mozambique = fill_list(mozambique)
-    if algeria_on: # namibia
+    if finished_countries[34]: # namibia
         namibia = fill_list(namibia)
-    if algeria_on: # botswana
+    if finished_countries[35]: # botswana
         botswana = fill_list(botswana)
-    if algeria_on: # zimbabwe
+    if finished_countries[36]: # zimbabwe
         zimbabwe = fill_list(zimbabwe)
-    if algeria_on: # lesotho
+    if finished_countries[37]: # lesotho
         lesotho = fill_list(lesotho)
-    if algeria_on: # south africa
+    if finished_countries[38]: # south africa
         south_africa = fill_list(south_africa)
 
     print('            ___________')
@@ -673,7 +677,29 @@ def africa_map():
 
 def quiz(param):
     """country quiz"""
-    pass
+    match param:
+        case 'africa':
+            country_set = AFRICA
+
+            if show_disputed_territories: # adds western sahara if required
+                country_set.append(OTHER_DISPUTED_TERRITORIES[1])
+            if show_unrecognised_territories: # adds somaliland if required
+                country_set.append(UNRECOGNISED_TERRITORIES[0])
+
+            finished_countries = [0] * len(country_set)
+
+            finished_countries[2] = 1
+            finished_countries[13] = 1
+            finished_countries[17] = 1
+            finished_countries[21] = 1
+            finished_countries[27] = 1
+            finished_countries[30] = 1
+
+            africa_map(finished_countries)
+        case _:
+            return
+    
+    input('~~> ')
 
 
 #* program *#
@@ -714,11 +740,6 @@ while True:
             print('\033c', end='') # clear terminal
         case 'africa' | 'asia' | 'europe' | 'north america' | 'south america' | 'oceania':
             quiz(userInput)
-
-            if userInput == 'africa':
-                africa_map()
-            
-            input('~~> ')
 
             print('\033c', end='') # clear terminal
         case 'find':
