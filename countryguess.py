@@ -38,7 +38,7 @@ AFRICA = [
     'madagascar',
     'malawi',
     'mali',
-    'marutitania',
+    'mauritania',
     'mauritius',
     'morocco',
     'mozambique',
@@ -374,6 +374,38 @@ def africa_map():
         '     ',
         '______',
     ]
+    mauritania = [
+        '   ',
+        '   ',
+        '       ',
+        '        ',
+        '_________',
+    ]
+    senegal = [
+        '__  ',
+        '___'
+    ]
+    mali = [
+        '  ',
+        '     ',
+        '        ',
+        '         ',
+        '        ',
+        '____',
+        '      ',
+        ' _'
+    ]
+    niger = [
+        '    ',
+        '         ',
+        '         ',
+        '_,-,_______',
+    ]
+    nigeria = [
+        '        ',
+        '       ',
+        ' __ ',
+    ]
     chad = [
         '        ',
         '        ',
@@ -383,6 +415,32 @@ def africa_map():
         '      ',
         '_ ',
     ]
+    sudan = [
+        '        ',
+        '        ',
+        '       ',
+        '_______',
+    ]
+    south_sudan = [
+        '       ',
+        '    _',
+        '    ',
+    ]
+    ethiopia = [
+        ' ',
+        '    ',
+        '       ',
+        '   ',
+        '    ',
+        '---',
+    ]
+    somalia = [
+        '\'""""',
+        '___  ',
+        ' ',
+        ' ,',
+        ',',
+    ]
     lesotho = ['[]']
 
     if algeria_on and not disputed_territories: # morocco w/ western sahara
@@ -390,7 +448,7 @@ def africa_map():
     elif algeria_on and disputed_territories: # morocco w/o western sahara
         morocco[:3] = fill_list(morocco[:3])
     if algeria_on and disputed_territories: # western sahara
-        morocco[3:6] = fill_list(morocco[3:6])
+        morocco[3:6] = fill_list(morocco[3:6], '%')
     if algeria_on: # algeria
         algeria = fill_list(algeria)
     if algeria_on: # tunisia
@@ -399,8 +457,30 @@ def africa_map():
         libya = fill_list(libya)
     if algeria_on: # egypt
         egypt = fill_list(egypt)
+    if algeria_on: # mauritania
+        mauritania = fill_list(mauritania)
+    if algeria_on: # senegal
+        senegal = fill_list(senegal)
+    if algeria_on: # mali
+        mali = fill_list(mali)
+    if algeria_on: # niger
+        niger = fill_list(niger)
+    if algeria_on: # nigeria
+        nigeria = fill_list(nigeria)
     if algeria_on: # chad
         chad = fill_list(chad)
+    if algeria_on: # sudan
+        sudan = fill_list(sudan)
+    if algeria_on: # south sudan
+        south_sudan = fill_list(south_sudan)
+    if algeria_on: # ethiopia
+        ethiopia = fill_list(ethiopia)
+    if algeria_on and not disputed_territories: # somalia w/ somaliland
+        somalia = fill_list(somalia)
+    elif algeria_on and disputed_territories: # somaliland w/o somaliland
+        somalia[2:5] = fill_list(somalia[2:5])
+    if algeria_on and disputed_territories: # somaliland
+        somalia[:2] = fill_list(somalia[:2], '%')
     if algeria_on: # lesotho
         lesotho = fill_list(lesotho)
 
@@ -409,16 +489,16 @@ def africa_map():
     print(f'        ,\'{morocco[1]},\'{algeria[1]}\\{tunisia[1]}\',_    __')
     print(f'     ,\'{morocco[2]}/{algeria[2]}|{libya[0]}\',|{libya[1]}"\'-,,,,,,,')
     print(f'   ,/{morocco[3]}|\',{algeria[3]}|{libya[2]}|{egypt[0]} \\')
-    print(f'   |{morocco[4]}|   |\'{algeria[4]},\\{libya[3]}|{egypt[1]}\\')
-    print(f'   |{morocco[5]}|   |  \',{algeria[5]}\',{libya[4]}|{egypt[2]}\\')
-    print(f'  /       |     \',{algeria[6]},_"""""---\'{libya[5]},\'{egypt[3]}\\')
-    print(f' /        |        \'{algeria[7]}-\'"    |{chad[0]}|        \',')
-    print(f'|_________|         |         /{chad[1]}|        / \',,\'""""|')
-    print(f'|__  |        ,____/         |{chad[2]}|       /    |___  /')
-    print(f'\'\\___|      ,\'_,\'|_,-,_______|{chad[3]}|_______/      , \'/')
-    print(f'  \\,\' _\', _/  ,, ,\',|        |{chad[4]}\\       |   \'" ,\'')
-    print(f'   \\ / |_ ,  |  \\||||       ,\' |{chad[5]},\'|    _""    |,\'')
-    print(f'    \' ,\'  \', |  ||||| __ ,\'   _|{chad[6]},\'    |    |""---/')
+    print(f'   |{morocco[4]}|{mauritania[0]}|\'{algeria[4]},\\{libya[3]}|{egypt[1]}\\')
+    print(f'   |{morocco[5]}|{mauritania[1]}|{mali[0]}\',{algeria[5]}\',{libya[4]}|{egypt[2]}\\')
+    print(f'  /{mauritania[2]}|{mali[1]}\',{algeria[6]},_"""""---\'{libya[5]},\'{egypt[3]}\\')
+    print(f' /{mauritania[3]}|{mali[2]}\'{algeria[7]}-\'"{niger[0]}|{chad[0]}|{sudan[0]}\',')
+    print(f'|{mauritania[4]}|{mali[3]}|{niger[1]}/{chad[1]}|{sudan[1]}/{ethiopia[0]}\',,{somalia[0]}|')
+    print(f'|{senegal[0]}|{mali[4]},{mali[5]}/{niger[2]}|{chad[2]}|{sudan[2]}/{ethiopia[1]}|{somalia[1]}/')
+    print(f'\'\\{senegal[1]}|{mali[6]},\'_,\'|{niger[3]}|{chad[3]}|{sudan[3]}/{ethiopia[2]}\'{somalia[2]}/')
+    print(f'  \\,\' _\',{mali[7]}/  ,, ,\',|{nigeria[0]}|{chad[4]}\\{south_sudan[0]}|{ethiopia[3]}\'"{somalia[3]}\'')
+    print(f'   \\ / |_ ,  |  \\||||{nigeria[1]},\' |{chad[5]},\'|{south_sudan[1]}""{ethiopia[4]}|{somalia[4]}\'')
+    print(f'    \' ,\'  \', |  |||||{nigeria[2]},\'   _|{chad[6]},\'    |{south_sudan[2]}|""{ethiopia[5]}/')
     print(f'       \' ,"""\',\'"""""" |     /           \\"""|    /')
     print(f'                      |_____|_      __\'\'"    \\   |')
     print(f'                     |  |  /  """"""   |      \\ /')
