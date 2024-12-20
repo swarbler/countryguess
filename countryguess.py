@@ -283,6 +283,7 @@ UNRECOGNISED_TERRITORIES_ALT = {
     'republic of artsakh': 'nagorno-karabakh',
 }
 
+
 #* declares functions *#
 
 def warning_tag(param): return Back.RED + param + Back.RESET
@@ -321,6 +322,126 @@ def call_error(param, errorType='none', minR=0, maxR=0):
 
     print('\033c', end='') # clear terminal
 
+
+#* quiz functions *#
+
+def fill_list(param=[' '], fill='#'):
+    filledList = []
+
+    for i in param:
+        filledList.append(len(i) * fill)
+    
+    return filledList
+
+def africa_map():
+    algeria_on = True
+    disputed_territories = True
+
+    morocco = [
+        ' ',
+        ' ',
+        '__' if disputed_territories else '  ',
+        '  _',
+        '  ',
+        '__'
+    ]
+
+    algeria = [
+        '       ',
+        '         ',
+        '             ',
+        '            ',
+        '           ',
+        '          ',
+        '        ',
+        ',,_',
+    ]
+    tunisia = [
+        ' ',
+        '/',
+    ]
+    libya = [
+        '    ',
+        '  ',
+        '                ',
+        '               ',
+        '             ',
+        '-_',
+    ]
+    egypt = [
+        '   ',
+        '    ',
+        '     ',
+        '______',
+    ]
+    chad = [
+        '        ',
+        '        ',
+        '        _',
+        '         ',
+        '          ',
+        '      ',
+        '_ ',
+    ]
+    lesotho = ['[]']
+
+    if algeria_on and not disputed_territories: # morocco w/ western sahara
+        morocco = fill_list(morocco)
+    elif algeria_on and disputed_territories: # morocco w/o western sahara
+        morocco[:3] = fill_list(morocco[:3])
+    if algeria_on and disputed_territories: # western sahara
+        morocco[3:6] = fill_list(morocco[3:6])
+    if algeria_on: # algeria
+        algeria = fill_list(algeria)
+    if algeria_on: # tunisia
+        tunisia = fill_list(tunisia)
+    if algeria_on: # libya
+        libya = fill_list(libya)
+    if algeria_on: # egypt
+        egypt = fill_list(egypt)
+    if algeria_on: # chad
+        chad = fill_list(chad)
+    if algeria_on: # lesotho
+        lesotho = fill_list(lesotho)
+
+    print('            ___________')
+    print(f'           /{morocco[0]}|{algeria[0]}|{tunisia[0]}|')
+    print(f'        ,\'{morocco[1]},\'{algeria[1]}\\{tunisia[1]}\',_    __')
+    print(f'     ,\'{morocco[2]}/{algeria[2]}|{libya[0]}\',|{libya[1]}"\'-,,,,,,,')
+    print(f'   ,/{morocco[3]}|\',{algeria[3]}|{libya[2]}|{egypt[0]} \\')
+    print(f'   |{morocco[4]}|   |\'{algeria[4]},\\{libya[3]}|{egypt[1]}\\')
+    print(f'   |{morocco[5]}|   |  \',{algeria[5]}\',{libya[4]}|{egypt[2]}\\')
+    print(f'  /       |     \',{algeria[6]},_"""""---\'{libya[5]},\'{egypt[3]}\\')
+    print(f' /        |        \'{algeria[7]}-\'"    |{chad[0]}|        \',')
+    print(f'|_________|         |         /{chad[1]}|        / \',,\'""""|')
+    print(f'|__  |        ,____/         |{chad[2]}|       /    |___  /')
+    print(f'\'\\___|      ,\'_,\'|_,-,_______|{chad[3]}|_______/      , \'/')
+    print(f'  \\,\' _\', _/  ,, ,\',|        |{chad[4]}\\       |   \'" ,\'')
+    print(f'   \\ / |_ ,  |  \\||||       ,\' |{chad[5]},\'|    _""    |,\'')
+    print(f'    \' ,\'  \', |  ||||| __ ,\'   _|{chad[6]},\'    |    |""---/')
+    print(f'       \' ,"""\',\'"""""" |     /           \\"""|    /')
+    print(f'                      |_____|_      __\'\'"    \\   |')
+    print(f'                     |  |  /  """"""   |      \\ /')
+    print(f'                      \\ / |            |       /')
+    print(f'                       \\--\'            |      /')
+    print(f'                       |   \\__        _|__    |')
+    print(f'                       |      |__     |   \',,,|')
+    print(f'                       |         |____|   /   |')
+    print(f'                       /         _|    ,,\'_   |')
+    print(f'                      |__________|___,\'  ,,\' /')
+    print(f'                       \\      ---\'    \\,/  ,\'')
+    print(f'                        \\     |    ,,,\' \\_/')
+    print(f'                         |    |_,\'\'      |/')
+    print(f'                         |    |       {lesotho[0]}_|')
+    print(f'                          \\___\'        /')
+    print(f'                           \\       __,\'')
+    print(f'                            \\_____/        FoulWing')
+
+def quiz(param):
+    """country quiz"""
+    pass
+
+
 #* program *#
 
 while True:
@@ -354,24 +475,16 @@ while True:
 
     match userInput:
         case 'countries of the world' | 'countries' | 'world':
+            quiz('world')
 
             print('\033c', end='') # clear terminal
-        case 'africa':
+        case 'africa' | 'asia' | 'europe' | 'north america' | 'south america' | 'oceania':
+            quiz(userInput)
 
-            print('\033c', end='') # clear terminal
-        case 'asia':
-
-            print('\033c', end='') # clear terminal
-        case 'europe':
-
-            print('\033c', end='') # clear terminal
-        case 'north america':
-
-            print('\033c', end='') # clear terminal
-        case 'south america':
-
-            print('\033c', end='') # clear terminal
-        case 'oceania':
+            if userInput == 'africa':
+                africa_map()
+            
+            input('~~> ')
 
             print('\033c', end='') # clear terminal
         case 'find':
