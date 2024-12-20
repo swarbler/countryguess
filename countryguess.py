@@ -687,10 +687,12 @@ def quiz(param):
 
             if show_disputed_territories: # adds western sahara if required
                 country_set.append(OTHER_DISPUTED_TERRITORIES[1])
+            else:
+                country_set.append(0) # blank entry
             if show_unrecognised_territories and show_disputed_territories: # adds somaliland if required
                 country_set.append(UNRECOGNISED_TERRITORIES[0])
-            elif show_unrecognised_territories: # adds somaliland if required
-                country_set.append([0, UNRECOGNISED_TERRITORIES[0]])
+            else:
+                country_set.append(0) # blank entry
 
             finished_countries = [0] * len(country_set)
 
@@ -711,6 +713,7 @@ def quiz(param):
                         print(f'~ {country_set[i]}')
                     else:
                         print(f'~ {country_set[i]} (not shown on map)')
+                        
                     counter += 1
             
             print(f'{counter}/{len(country_set)}')
