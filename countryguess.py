@@ -334,7 +334,7 @@ def fill_list(param=[' '], fill='#'):
     return filledList
 
 def africa_map():
-    algeria_on = False
+    algeria_on = True
     disputed_territories = True
     unrecognised_territories = True
 
@@ -478,6 +478,81 @@ def africa_map():
         '           ',
         '_      __',
     ]
+    kenya = [
+        '    ',
+        '   ',
+        ' ',
+    ]
+    gabon = [
+        '  ',
+        ' ',
+    ]
+    rep_of_congo = [
+        '  ',
+        ' ',
+        '--',
+    ]
+    dem_rep_of_congo = [
+        '  """"""   ',
+        '            ',
+        '            ',
+        '__        _',
+        '__     ',
+        '____',
+    ]
+    tanzania = [
+        '    ',
+        '      ',
+        '       ',
+        '      ',
+        '__    ',
+        ',,,',
+    ]
+    angola = [
+        '   ',
+        '      ',
+        '         ',
+        '         _',
+        '__________',
+    ]
+    zambia = [
+        '   ',
+        '   ',
+        '    ,,',
+        '___,',
+    ]
+    mozambique = [
+        '   ',
+        '_   ',
+        ' ',
+        '  ',
+        '_',
+    ]
+    namibia = [
+        '      ---',
+        '     ',
+        '    ',
+        '    ',
+        '___',
+    ]
+    botswana = [
+        '    ',
+        '    ,,,',
+        '_,',
+    ]
+    zimbabwe = [
+        '  ,,',
+        ',',
+    ]
+    south_africa = [
+        ' ',
+        '\'      ',
+        '       ',
+        '_',
+        '        ',
+        '       __',
+        '_____'
+    ]
     lesotho = ['[]']
 
     if algeria_on and not disputed_territories: # morocco w/ western sahara
@@ -536,8 +611,32 @@ def africa_map():
         cameroon = fill_list(cameroon)
     if algeria_on: # central african republic
         central_african_rep = fill_list(central_african_rep)
+    if algeria_on: # kenya
+        kenya = fill_list(kenya)
+    if algeria_on: # gabon
+        gabon = fill_list(gabon)
+    if algeria_on: # republic of congo
+        rep_of_congo = fill_list(rep_of_congo)
+    if algeria_on: # democratic republic of congo
+        dem_rep_of_congo = fill_list(dem_rep_of_congo)
+    if algeria_on: # tanzania
+        tanzania = fill_list(tanzania)
+    if algeria_on: # angola
+        angola = fill_list(angola)
+    if algeria_on: # tanzania
+        zambia = fill_list(zambia)
+    if algeria_on: # mozambique
+        mozambique = fill_list(mozambique)
+    if algeria_on: # namibia
+        namibia = fill_list(namibia)
+    if algeria_on: # botswana
+        botswana = fill_list(botswana)
+    if algeria_on: # zimbabwe
+        zimbabwe = fill_list(zimbabwe)
     if algeria_on: # lesotho
         lesotho = fill_list(lesotho)
+    if algeria_on: # south africa
+        south_africa = fill_list(south_africa)
 
     print('            ___________')
     print(f'           /{morocco[0]}|{algeria[0]}|{tunisia[0]}|')
@@ -554,23 +653,23 @@ def africa_map():
     print(f'  \\,\' _\',{mali[7]}/{guinea[0]},, ,\',|{nigeria[0]}|{chad[4]}\\{south_sudan[0]}|{ethiopia[3]}\'"{somalia[3]}\'')
     print(f'   \\{sierra_leone[0]}/{liberia[0]}|_ ,{guinea[1]}|{ghana[0]}\\{togo[0]}{benin[0]}{nigeria[1]},\'{cameroon[0]}|{chad[5]},\'|{south_sudan[1]}""{ethiopia[4]}|{somalia[4]}\'')
     print(f'    \'{liberia[1]},\'{cote_divoire[0]}\',{guinea[2]}|{ghana[1]}|{togo[1]}{benin[1]}{nigeria[2]},\'{cameroon[1]}|{chad[6]},\'{central_african_rep[0]}|{south_sudan[2]}|""{ethiopia[5]}/')
-    print(f'       \'{cote_divoire[1]},"""\',\'""""""|{cameroon[2]}/{central_african_rep[1]}\\"""|    /')
-    print(f'                      |{cameroon[3]}|{central_african_rep[2]}\'\'"    \\   |')
-    print(f'                     |  |  /  """"""   |      \\ /')
-    print(f'                      \\ / |            |       /')
-    print(f'                       \\--\'            |      /')
-    print(f'                       |   \\__        _|__    |')
-    print(f'                       |      |__     |   \',,,|')
-    print(f'                       |         |____|   /   |')
-    print(f'                       /         _|    ,,\'_   |')
-    print(f'                      |__________|___,\'  ,,\' /')
-    print(f'                       \\      ---\'    \\,/  ,\'')
-    print(f'                        \\     |    ,,,\' \\_/')
-    print(f'                         |    |_,\'\'      |/')
-    print(f'                         |    |       {lesotho[0]}_|')
-    print(f'                          \\___\'        /')
-    print(f'                           \\       __,\'')
-    print(f'                            \\_____/        FoulWing')
+    print(f'       \'{cote_divoire[1]},"""\',\'""""""|{cameroon[2]}/{central_african_rep[1]}\\"""|{kenya[0]}/')
+    print(f'                      |{cameroon[3]}|{central_african_rep[2]}\'\'"{tanzania[0]}\\{kenya[1]}|')
+    print(f'                     |{gabon[0]}|{rep_of_congo[0]}/{dem_rep_of_congo[0]}|{tanzania[1]}\\{kenya[2]}/')
+    print(f'                      \\{gabon[1]}/{rep_of_congo[1]}|{dem_rep_of_congo[1]}|{tanzania[2]}/')
+    print(f'                       \\{rep_of_congo[2]}\'{dem_rep_of_congo[2]}|{tanzania[3]}/')
+    print(f'                       |{angola[0]}\\{dem_rep_of_congo[3]}|{tanzania[4]}|')
+    print(f'                       |{angola[1]}|{dem_rep_of_congo[4]}|{zambia[0]}\'{tanzania[5]}|')
+    print(f'                       |{angola[2]}|{dem_rep_of_congo[5]}|{zambia[1]}/{mozambique[0]}|')
+    print(f'                       /{angola[3]}|{zambia[2]}\'{mozambique[1]}|')
+    print(f'                      |{angola[4]}|{zambia[3]}\'{zimbabwe[0]}\'{mozambique[2]}/')
+    print(f'                       \\{namibia[0]}\'{botswana[0]}\\{zimbabwe[1]}/{mozambique[3]},\'')
+    print(f'                        \\{namibia[1]}|{botswana[1]}\'{south_africa[0]}\\{mozambique[4]}/')
+    print(f'                         |{namibia[2]}|{botswana[2]}\'{south_africa[1]}|/')
+    print(f'                         |{namibia[3]}|{south_africa[2]}{lesotho[0]}{south_africa[3]}|')
+    print(f'                          \\{namibia[4]}\'{south_africa[4]}/')
+    print(f'                           \\{south_africa[5]},\'')
+    print(f'                            \\{south_africa[6]}/        FoulWing')
 
 def quiz(param):
     """country quiz"""
