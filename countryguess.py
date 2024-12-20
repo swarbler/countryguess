@@ -260,10 +260,6 @@ OCEANIA = [
     'vanuatu',
 ]
 
-# list of all the (U.N. recognised) countries in the world
-WORLD = AFRICA + ASIA + EUROPE + NORTH_AMERICA + SOUTH_AMERICA + OCEANIA
-WORLD_ALT = AFRICA_ALT | ASIA_ALT | EUROPE_ALT | NORTH_AMERICA_ALT
-
 # U.N. observer states
 OBSERVER_STATES = [
     'palestine',
@@ -317,10 +313,6 @@ def call_error(param, errorType='none', minR=0, maxR=0):
     err = warning_tag(param)
 
     match errorType:
-        case 'subject':
-            print(f'{err} is not a valid subject. Please try again.')
-        case 'topic':
-            print(f'{err} is not a valid topic. Please try again.')
         case 'does_not_exist':
             print(f'{err} does not exist yet. Please try again later.')
         case 'range':
@@ -334,6 +326,15 @@ def call_error(param, errorType='none', minR=0, maxR=0):
 
 
 #* quiz functions *#
+
+def dotdotdot(length=1, interval=.5):
+    """small loading screen"""
+
+    for dot in range(2): # repeats twice
+        print('.', end='', flush=True) # no new line after each dot
+        time.sleep(interval) # small delay between each dot
+    print('.')
+    time.sleep(length) # longer delay after last dot
 
 def fill_list(param=[' '], fill='#'):
     filledList = []
@@ -644,7 +645,6 @@ def africa_map(finished_countries):
     if finished_countries[45]: # south africa
         south_africa = fill_list(south_africa)
 
-    print('\033c', end='') # clear terminal
     print(Fore.RED, end='')
     print('            ___________')
     print(f'           /{morocco[0]}|{algeria[0]}|{tunisia[0]}|')
@@ -681,9 +681,16 @@ def africa_map(finished_countries):
 
 def quiz(param):
     """country quiz"""
+    end_game = False
+    INDEXES_ON_MAP = []
+    country_set = []
+    country_alt_set = []
+    GIVEUP_COMMANDS = ['give up', 'giveup', 'forfeit', 'surrender', 'quit', 'i quit']
+
     match param:
         case 'africa':
             country_set = AFRICA
+            country_alt_set = AFRICA_ALT
 
             if show_disputed_territories: # adds western sahara if required
                 country_set.append(OTHER_DISPUTED_TERRITORIES[1])
@@ -695,31 +702,98 @@ def quiz(param):
                 country_set.append(0) # blank entry
 
             finished_countries = [0] * len(country_set)
+            INDEXES_ON_MAP = AFRICA_INDEXES_ON_MAP
+        case 'asia' | 'europe' | 'north america' | 'south america' | 'oceania':
+            call_error(param, 'does_not_exist')
 
-            finished_countries[3] = 1
-            finished_countries[21] = 1
-            finished_countries[19] = 1
-            finished_countries[50] = 1
-            finished_countries[52] = 1
-            finished_countries[31] = 1
-
-            africa_map(finished_countries)
-
-            counter = 0
-
-            for i in range(len(country_set)):
-                if finished_countries[i]:
-                    if i in AFRICA_INDEXES_ON_MAP:
-                        print(f'~ {country_set[i]}')
-                    else:
-                        print(f'~ {country_set[i]} (not shown on map)')
-                        
-                    counter += 1
-            
-            print(f'{counter}/{len(country_set)}')
+            return
         case _:
             return
     
+    while not end_game:
+        listed_indexes = []
+        listed_countries = []
+
+        # iterates over every country to find the indexes and names of guessed countries
+        for i in range(len(country_set)):
+            if finished_countries[i]:
+                listed_indexes.append(i)
+                listed_countries.append(country_set[i])
+        
+        # checks whether user has won
+        if len(listed_countries) == len(country_set):
+            end_game = True
+            print(Fore.MAGENTA)
+            print('>> you got all the countries!')
+            break # break out of loop if all countries have been guessed
+
+        print('\033c', end='') # clear terminal
+
+        if userInput == 'africa':
+            africa_map(finished_countries)
+
+        # prints pairs of countries 
+        print(Fore.GREEN)
+        for i in range(1, len(listed_countries), 2):
+            # countries not shown on the map are labelled
+            if i in INDEXES_ON_MAP:
+                print(f'~ {listed_countries[i-1]}   \t\t\t\t', end='')
+            else:
+                print(f'~ {listed_countries[i-1]}   (not shown on map) \t', end='')
+            
+            # countries not shown on the map are labelled
+            if i+1 in INDEXES_ON_MAP:
+                print(f'~ {listed_countries[i]}')
+            else:
+                print(f'~ {listed_countries[i]} (not shown on map)')
+        
+        # prints remainder if odd number of guessed countries
+        if len(listed_countries) % 2 == 1:
+            print(f'~ {listed_countries[-1]}')
+        
+        print(Fore.MAGENTA)
+        print(f'{len(listed_countries)}/{len(country_set)}') # shows how many countries you have guessed correctly
+        
+        print(Fore.YELLOW)
+        userAction = input('~~> ')
+
+        if userAction in listed_countries:
+            print(Fore.YELLOW)
+            print('>> silly goose! you already have that country!')
+
+            input('~~> ')
+        elif userAction in country_set:
+            finished_countries[country_set.index(userAction)] = 1
+            print(Fore.GREEN)
+            print(f'>> country added: {userAction}')
+
+            input('~~> ')
+        elif userAction in country_alt_set:
+            if country_alt_set[userAction] in listed_countries:
+                print(Fore.YELLOW)
+                print('>> silly goose! you already have that country!')
+            else:
+                finished_countries[country_set.index(country_alt_set[userAction])] = 1
+                print(Fore.GREEN)
+                print(f'>> country added: {country_alt_set[userAction]}')
+
+            input('~~> ')
+        elif userAction in GIVEUP_COMMANDS:
+            end_game = True
+            print(Fore.RED)
+            print('>> You have given up')
+
+            input('~~> ')
+        else:
+            print('\033c', end='') # clear terminal
+
+            call_error(userAction, 'not_a_country')
+
+    dotdotdot()
+
+    print(Fore.MAGENTA)
+    print(f'you got {len(listed_countries)}/{len(country_set)} of the countries of {param}!') # shows how many countries you have guessed correctly
+
     input('~~> ')
 
 
@@ -771,27 +845,24 @@ while True:
             print('')
             if userInput in AFRICA or userInput in AFRICA_ALT:
                 print(Fore.RED + 'this country is in africa')
-            if userInput in ASIA or userInput in ASIA_ALT:
+            elif userInput in ASIA or userInput in ASIA_ALT:
                 print(Fore.CYAN + 'this country is in asia')
-            if userInput in EUROPE or userInput in EUROPE_ALT:
+            elif userInput in EUROPE or userInput in EUROPE_ALT:
                 print(Fore.MAGENTA + 'this country is in europe')
-            if userInput in NORTH_AMERICA or userInput in NORTH_AMERICA_ALT:
+            elif userInput in NORTH_AMERICA or userInput in NORTH_AMERICA_ALT:
                 print(Fore.YELLOW + 'this country is in north america')
-            if userInput in SOUTH_AMERICA:
+            elif userInput in SOUTH_AMERICA:
                 print(Fore.GREEN + 'this country is in south america')
-            if userInput in OCEANIA:
+            elif userInput in OCEANIA:
                 print(Fore.BLUE + 'this country is in oceania')
-            if userInput in OBSERVER_STATES or userInput in OBSERVER_STATES_ALT:
+            elif userInput in OBSERVER_STATES or userInput in OBSERVER_STATES_ALT:
                 print(Fore.BLUE + 'this is a U.N. observer state')
-            if userInput in OTHER_DISPUTED_TERRITORIES:
+            elif userInput in OTHER_DISPUTED_TERRITORIES:
                 print(Fore.YELLOW + 'this is a disputed territory')
-            if userInput in UNRECOGNISED_TERRITORIES or userInput in UNRECOGNISED_TERRITORIES_ALT:
+            elif userInput in UNRECOGNISED_TERRITORIES or userInput in UNRECOGNISED_TERRITORIES_ALT:
                 print(Fore.RED + 'this is an unrecognised territory')
-
-            if userInput in WORLD or userInput in WORLD_ALT:
-                print(Fore.GREEN + 'this is a U.N. recognised country')
-            elif not (userInput in OBSERVER_STATES or userInput in OBSERVER_STATES_ALT or userInput in OTHER_DISPUTED_TERRITORIES or userInput in UNRECOGNISED_TERRITORIES or userInput in UNRECOGNISED_TERRITORIES_ALT):
-                print(Fore.RED + 'this is not a country!')
+            else:
+                print(Fore.RED + 'this is not a country or territory')
             
             print(Fore.YELLOW)
             input(Fore.CYAN + '~~> ')            
