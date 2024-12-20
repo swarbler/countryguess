@@ -334,8 +334,9 @@ def fill_list(param=[' '], fill='#'):
     return filledList
 
 def africa_map():
-    algeria_on = True
+    algeria_on = False
     disputed_territories = True
+    unrecognised_territories = True
 
     morocco = [
         ' ',
@@ -345,7 +346,6 @@ def africa_map():
         '  ',
         '__'
     ]
-
     algeria = [
         '       ',
         '         ',
@@ -441,6 +441,43 @@ def africa_map():
         ' ,',
         ',',
     ]
+    sierra_leone = [' ']
+    liberia = [
+        ' ',
+        ' ',
+    ]
+    cote_divoire = [
+        '  ',
+        ' ',
+    ]
+    guinea = [
+        '  ',
+        '  ',
+        ' ',
+    ]
+    ghana = [
+        '  ',
+        '  ',
+    ]
+    togo = [
+        '||',
+        '||',
+    ]
+    benin = [
+        '||',
+        '||',
+    ]
+    cameroon = [
+        ' ',
+        '   _',
+        '     ',
+        '_____',
+    ]
+    central_african_rep = [
+        '    ',
+        '           ',
+        '_      __',
+    ]
     lesotho = ['[]']
 
     if algeria_on and not disputed_territories: # morocco w/ western sahara
@@ -475,12 +512,30 @@ def africa_map():
         south_sudan = fill_list(south_sudan)
     if algeria_on: # ethiopia
         ethiopia = fill_list(ethiopia)
-    if algeria_on and not disputed_territories: # somalia w/ somaliland
+    if algeria_on and not unrecognised_territories: # somalia w/ somaliland
         somalia = fill_list(somalia)
-    elif algeria_on and disputed_territories: # somaliland w/o somaliland
+    elif algeria_on and unrecognised_territories: # somaliland w/o somaliland
         somalia[2:5] = fill_list(somalia[2:5])
-    if algeria_on and disputed_territories: # somaliland
+    if algeria_on and unrecognised_territories: # somaliland
         somalia[:2] = fill_list(somalia[:2], '%')
+    if algeria_on: # sierra leone
+        sierra_leone = fill_list(sierra_leone)
+    if algeria_on: # liberia
+        liberia = fill_list(liberia)
+    if algeria_on: # cote d' ivoire
+        cote_divoire = fill_list(cote_divoire)
+    if algeria_on: # guinea
+        guinea = fill_list(guinea)
+    if algeria_on: # togo
+        togo = fill_list(togo)
+    if algeria_on: # benin
+        benin = fill_list(benin)
+    if algeria_on: # ghana
+        ghana = fill_list(ghana)
+    if algeria_on: # cameroon
+        cameroon = fill_list(cameroon)
+    if algeria_on: # central african republic
+        central_african_rep = fill_list(central_african_rep)
     if algeria_on: # lesotho
         lesotho = fill_list(lesotho)
 
@@ -496,11 +551,11 @@ def africa_map():
     print(f'|{mauritania[4]}|{mali[3]}|{niger[1]}/{chad[1]}|{sudan[1]}/{ethiopia[0]}\',,{somalia[0]}|')
     print(f'|{senegal[0]}|{mali[4]},{mali[5]}/{niger[2]}|{chad[2]}|{sudan[2]}/{ethiopia[1]}|{somalia[1]}/')
     print(f'\'\\{senegal[1]}|{mali[6]},\'_,\'|{niger[3]}|{chad[3]}|{sudan[3]}/{ethiopia[2]}\'{somalia[2]}/')
-    print(f'  \\,\' _\',{mali[7]}/  ,, ,\',|{nigeria[0]}|{chad[4]}\\{south_sudan[0]}|{ethiopia[3]}\'"{somalia[3]}\'')
-    print(f'   \\ / |_ ,  |  \\||||{nigeria[1]},\' |{chad[5]},\'|{south_sudan[1]}""{ethiopia[4]}|{somalia[4]}\'')
-    print(f'    \' ,\'  \', |  |||||{nigeria[2]},\'   _|{chad[6]},\'    |{south_sudan[2]}|""{ethiopia[5]}/')
-    print(f'       \' ,"""\',\'"""""" |     /           \\"""|    /')
-    print(f'                      |_____|_      __\'\'"    \\   |')
+    print(f'  \\,\' _\',{mali[7]}/{guinea[0]},, ,\',|{nigeria[0]}|{chad[4]}\\{south_sudan[0]}|{ethiopia[3]}\'"{somalia[3]}\'')
+    print(f'   \\{sierra_leone[0]}/{liberia[0]}|_ ,{guinea[1]}|{ghana[0]}\\{togo[0]}{benin[0]}{nigeria[1]},\'{cameroon[0]}|{chad[5]},\'|{south_sudan[1]}""{ethiopia[4]}|{somalia[4]}\'')
+    print(f'    \'{liberia[1]},\'{cote_divoire[0]}\',{guinea[2]}|{ghana[1]}|{togo[1]}{benin[1]}{nigeria[2]},\'{cameroon[1]}|{chad[6]},\'{central_african_rep[0]}|{south_sudan[2]}|""{ethiopia[5]}/')
+    print(f'       \'{cote_divoire[1]},"""\',\'""""""|{cameroon[2]}/{central_african_rep[1]}\\"""|    /')
+    print(f'                      |{cameroon[3]}|{central_african_rep[2]}\'\'"    \\   |')
     print(f'                     |  |  /  """"""   |      \\ /')
     print(f'                      \\ / |            |       /')
     print(f'                       \\--\'            |      /')
