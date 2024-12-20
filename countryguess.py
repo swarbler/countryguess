@@ -738,13 +738,13 @@ def quiz(param):
         print(Fore.GREEN)
         for i in range(1, len(listed_countries), 2):
             # countries not shown on the map are labelled
-            if listed_indexes[i] in INDEXES_ON_MAP:
+            if listed_indexes[i-1] in INDEXES_ON_MAP:
                 print(f'~ {listed_countries[i-1]}   \t\t\t\t', end='')
             else:
                 print(f'~ {listed_countries[i-1]}   (not shown on map)\t', end='')
             
             # countries not shown on the map are labelled
-            if listed_indexes[i+1] in INDEXES_ON_MAP:
+            if listed_indexes[i] in INDEXES_ON_MAP:
                 print(f'~ {listed_countries[i]}')
             else:
                 print(f'~ {listed_countries[i]} (not shown on map)')
