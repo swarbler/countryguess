@@ -893,6 +893,10 @@ def quiz(param):
 
             finished_countries = [0] * len(country_set)
             INDEXES_ON_MAP = AFRICA_INDEXES_ON_MAP
+        case 'asia':
+            call_error(param, 'does_not_exist')
+
+            return
         case 'europe':
             country_set = EUROPE
             country_alt_set = EUROPE_ALT
@@ -927,16 +931,13 @@ def quiz(param):
 
             finished_countries = [0] * len(country_set)
             INDEXES_ON_MAP = OCEANIA_INDEXES_ON_MAP
-        case 'asia':
-            call_error(param, 'does_not_exist')
-
-            return
         case _:
             return
     
     while not end_game:
-        listed_indexes = []
-        listed_countries = []
+        # lists are used to record all guessed countries
+        listed_indexes = [] # the indexes of the countries in country_set
+        listed_countries = [] # the names of the countries
 
         # iterates over every country to find the indexes and names of guessed countries
         for i in range(len(country_set)):
@@ -953,6 +954,7 @@ def quiz(param):
 
         print('\033c', end='') # clear terminal
 
+        # prints map with guessed countries
         match userInput:
             case 'africa':
                 africa_map(finished_countries)
@@ -967,7 +969,7 @@ def quiz(param):
 
         # prints pairs of countries 
         print(Fore.GREEN)
-        for i in range(1, len(listed_countries), 2):
+        for i in range(1, len(listed_countries), 2): # iterates every two countries
             # countries not shown on the map are labelled
             if listed_indexes[i-1] in INDEXES_ON_MAP:
                 print(f'~ {listed_countries[i-1]}   \t\t\t\t', end='')
@@ -982,6 +984,7 @@ def quiz(param):
         
         # prints remainder if odd number of guessed countries
         if len(listed_countries) % 2 == 1:
+            # countries not shown on the map are labelled
             if listed_indexes[-1] in INDEXES_ON_MAP:
                 print(f'~ {listed_countries[-1]}')
             else:
@@ -993,43 +996,45 @@ def quiz(param):
         print(Fore.YELLOW)
         userAction = input('~~> ')
 
-        if userAction in listed_countries:
+        if userAction in listed_countries: # tells user country has already been guessed
             print(Fore.YELLOW)
             print('>> silly goose! you already have that country!')
 
             input('~~> ')
-        elif userAction in country_set:
+        elif userAction in country_set: # adds country
             finished_countries[country_set.index(userAction)] = 1
             print(Fore.GREEN)
             print(f'>> country added: {userAction}')
 
             input('~~> ')
-        elif userAction in country_alt_set:
-            if country_alt_set[userAction] in listed_countries:
+        elif userAction in country_alt_set: # checks if user inputted alternative name for country
+            if country_alt_set[userAction] in listed_countries: # tells user country has already been guessed
                 print(Fore.YELLOW)
                 print('>> silly goose! you already have that country!')
-            else:
+            else: # adds country
                 finished_countries[country_set.index(country_alt_set[userAction])] = 1
                 print(Fore.GREEN)
                 print(f'>> country added: {country_alt_set[userAction]}')
 
             input('~~> ')
-        elif userAction in GIVEUP_COMMANDS:
+        elif userAction in GIVEUP_COMMANDS: # user gives up
             end_game = True
             print(Fore.RED)
             print('>> You have given up')
 
             input('~~> ')
-        else:
+        else: # tells user that is not a valid country
             print('\033c', end='') # clear terminal
 
             call_error(userAction, 'not_a_country')
 
     dotdotdot()
 
+    # tells user final score
     print(Fore.MAGENTA)
     print(f'you got {len(listed_countries)}/{len(country_set)} of the countries of {param}!') # shows how many countries you have guessed correctly
 
+    # waits for user to exit
     input('~~> ')
 
 
@@ -1045,12 +1050,12 @@ while True:
     print(Fore.GREEN)
     print('~ countries of the world')
     print('~ continents')
-    print(Fore.RED +    '   ~ africa')
-    print(Fore.CYAN +   '   ~ asia')
-    print(Fore.MAGENTA +   '   ~ europe')
-    print(Fore.YELLOW + '   ~ north america')
+    print(Fore.RED +     '   ~ africa')
+    print(Fore.CYAN +    '   ~ asia')
+    print(Fore.MAGENTA + '   ~ europe')
+    print(Fore.YELLOW +  '   ~ north america')
     print(Fore.GREEN +   '   ~ south america')
-    print(Fore.BLUE +   '   ~ oceania')
+    print(Fore.BLUE +    '   ~ oceania')
 
     print(Fore.YELLOW)
     print('~ find a country')
