@@ -273,21 +273,14 @@ OBSERVER_STATES_ALT = {
 # disputed territories
 OTHER_DISPUTED_TERRITORIES = [
     'kosovo',
-    'western sahara'
+    'western sahara',
 ]
 
 # unrecognised territories
 UNRECOGNISED_TERRITORIES = [
     'somaliland',
     'northern cyprus',
-    'abkhazia',
-    'south ossetia',
-    'nagorno-karabakh',
-    'transnistria',
 ]
-UNRECOGNISED_TERRITORIES_ALT = {
-    'republic of artsakh': 'nagorno-karabakh',
-}
 
 
 #* declares functions *#
@@ -681,6 +674,55 @@ def africa_map(finished_countries):
     print(f'                           \\{south_africa[5]},\'')
     print(f'                            \\{south_africa[6]}/        FoulWing')
 
+def europe_map(finished_countries):
+    print(Fore.MAGENTA, end='')
+    print(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::                               ')
+    print(':::::::::::::::::::::::::::::::::::::::::::::::@:+@ *:::::::::::  @:                                ')
+    print(':::::::::::::::::::::::::::::::::::::::::::::@:  @ .        :::::  :                                ')
+    print(':::::::::::::::::::::::::::::::::::::::::::@                    :::                                 ')
+    print(':::::   ::::::::::::::::::::::::::::::::+::                    ::                                   ')
+    print('::::: @   :  ::::::::::::::::::::::::::@::               :::::::                                    ')
+    print(':::::@        :::::::::::::::::::::::::::                  %:: ::                                   ')
+    print('::::::       ::::::::::::::::::::::::::# %       +          +:::                                    ')
+    print(':::::::::::::::::::::::::::::::::::::::         ::@                                                 ')
+    print('::::::::::::::::::::::::::::::::::::::          ::                                                  ')
+    print('::::::::::::::::::::::::::::::::::::           ::    :%  @    ::                                    ')
+    print('::::::::::::::::::-::::::::::::::::   %      :::     : @@@      :                                   ')
+    print(':::::::::::::::::::::::::::::::::           @:::%  =  *@: =:::                                      ')
+    print(':::::::::::::::::::::::::::::::             :::::       :   :                                       ')
+    print(':::::::::::::::::::::::@:::::::@             ::::::  ::::                                           ')
+    print('::::::::::::::::::::::::::::::::               ::::::   %    @                                      ')
+    print(':::::::::::::::: :   :::::::::::     @@ :    ::::::+:                                           *   ')
+    print('::::::::::::::::   :::::::::::::   :::       :::::::::                                              ')
+    print('::::::::::::::::@    ::::::::::::::: ::     @: :::%                                                 ')
+    print(':::::::::::::::@@  @::::::::::::::@@ :::    #:::::       @                                          ')
+    print('::::::::::::    =    :::::::::::::   :=   :::::::::      @                                          ')
+    print(':::::::::      :::@   ::::::::::::: :::::::::::@:=                @                      @         :')
+    print(':::::::::#    =::::    :::::::::::=   :@ :::                                             .@     ::::')
+    print('::::::::@     :::      :::::::#@                                        =    *@                :::::')
+    print(':::::::::::::::          ::::@@                                                                :::::')
+    print(':::::::::::::::@       ::::    @                                                              ::::::')
+    print('::::::::::::::::@:::::::      @            @                                    :             ::::::')
+    print('::::::::::::::::::: ::@                @                                      :                 ::::')
+    print('::::::::::::::   ::                             =                           ::::                  ::')
+    print(':::::::::::::::@                                                     :: @  ::@:                     ')
+    print(':::::::::::::::::@              @             :                     ::::    @:::::::@               ')
+    print('::::::::::::::::::                                               @  :::::::::::::::::::::           ')
+    print(':::::::::::::::::::                 @        @  :                  ::::::::::::::::::::::           ')
+    print('::::::::::::::::::                      :: :            %          :::::::::::::::::::              ')
+    print('::::+      :::::::                      ::::#                     :::::::::                   =   @ ')
+    print('::::                      #     :::::     ::::     @  =            ::::::                        @ @')
+    print('::::    @                ::::::::::@:%     :::::::@     =@                                          ')
+    print('::::                     :::::::::  :::      :@:::::: *   @   :*@ : @                               ')
+    print('::                  ::::::::::::::::::::::@      ::::  #  * *=:::                                   ')
+    print('::                 ::::::::::::::=  :::::::::   ::=:::     ::::::                  @ @              ')
+    print('::                :::::@::::::::::  :::::::::::  ::::::@   :  ::::@              :::                ')
+    print(':::              :::::::::::::::::::::::::::::: ::::::: :   : :::@::@     :::@@::=::@               ')
+    print('::::::         ::::::::::::::::::::::::::     ::::::::::::  ::::@:@:  :::::::::  ::::               ')
+    print(':::::::::::::::::::::::::::::::::::  ::::::@  :::::::::::::: :::::::@::::::::::::::::               ')
+    print('::::::   :::::::+*                   %::::::::::::::::::::::::    ::::::::::::::::::                ')
+    print('::::                                  ::::::::::::::::::::::::::::::::::::::::::::::                ')
+
 def quiz(param):
     """country quiz"""
     end_game = False
@@ -698,14 +740,36 @@ def quiz(param):
                 country_set.append(OTHER_DISPUTED_TERRITORIES[1])
             else:
                 country_set.append(0) # blank entry
-            if show_unrecognised_territories and show_disputed_territories: # adds somaliland if required
+
+            if show_unrecognised_territories: # adds somaliland if required
                 country_set.append(UNRECOGNISED_TERRITORIES[0])
             else:
                 country_set.append(0) # blank entry
 
             finished_countries = [0] * len(country_set)
             INDEXES_ON_MAP = AFRICA_INDEXES_ON_MAP
-        case 'asia' | 'europe' | 'north america' | 'south america' | 'oceania':
+        case 'europe':
+            country_set = EUROPE
+            country_alt_set = EUROPE_ALT
+
+            if show_observer_states: # adds vatican city if required
+                country_set.append(OBSERVER_STATES[1])
+            else:
+                country_set.append(0) # blank entry
+
+            if show_disputed_territories: # adds kosovo if required
+                country_set.append(OTHER_DISPUTED_TERRITORIES[0])
+            else:
+                country_set.append(0) # blank entry
+
+            if show_unrecognised_territories: # adds northern cyprus if required
+                country_set.append(UNRECOGNISED_TERRITORIES[1])
+            else:
+                country_set.append(0) # blank entry
+
+            finished_countries = [0] * len(country_set)
+            # INDEXES_ON_MAP = EUROPE_INDEXES_ON_MAP
+        case 'asia' | 'north america' | 'south america' | 'oceania':
             call_error(param, 'does_not_exist')
 
             return
@@ -733,6 +797,8 @@ def quiz(param):
 
         if userInput == 'africa':
             africa_map(finished_countries)
+        elif userInput == 'europe':
+            europe_map(finished_countries)
 
         # prints pairs of countries 
         print(Fore.GREEN)
@@ -741,7 +807,7 @@ def quiz(param):
             if listed_indexes[i-1] in INDEXES_ON_MAP:
                 print(f'~ {listed_countries[i-1]}   \t\t\t\t', end='')
             else:
-                print(f'~ {listed_countries[i-1]}   (not shown on map)\t', end='')
+                print(f'~ {listed_countries[i-1]} (not shown on map)  \t', end='')
             
             # countries not shown on the map are labelled
             if listed_indexes[i] in INDEXES_ON_MAP:
@@ -864,7 +930,7 @@ while True:
                 print(Fore.BLUE + 'this is a U.N. observer state')
             elif userInput in OTHER_DISPUTED_TERRITORIES:
                 print(Fore.YELLOW + 'this is a disputed territory')
-            elif userInput in UNRECOGNISED_TERRITORIES or userInput in UNRECOGNISED_TERRITORIES_ALT:
+            elif userInput in UNRECOGNISED_TERRITORIES:
                 print(Fore.RED + 'this is an unrecognised territory')
             else:
                 print(Fore.RED + 'this is not a country or territory')
