@@ -86,7 +86,7 @@ AFRICA_ALT = {
 AFRICA_INDEXES_ON_MAP = [34, 54, 0, 50, 28, 15, 32, 41, 31, 37, 38, 9, 47, 46, 19, 44, 55, 43, 27, 12, 23, 49, 2, 22, 7, 8, 25, 20, 11, 14, 48, 1, 52, 35, 36, 3, 53, 26, 45]
 ASIA_INDEXES_ON_MAP = []
 EUROPE_INDEXES_ON_MAP = []
-NORTH_AMERICA_INDEXES_ON_MAP = []
+NORTH_AMERICA_INDEXES_ON_MAP = [4, 22, 15]
 SOUTH_AMERICA_INDEXES_ON_MAP = []
 OCEANIA_INDEXES_ON_MAP = [8, 0, 6]
 
@@ -733,45 +733,100 @@ def europe_map(finished_countries):
 
 def north_america_map(finished_countries):
     """map of north america"""
+
+    canada = [
+        '         ',
+        '            ',
+        '                      ',
+        '                   ',
+        '                    ',
+        '                  ',
+        '                       ',
+        '            ',
+        '                                      ',
+        '                          ',
+        '      ',
+        '                                ',
+        '      ',
+    ]
+    usa = [
+        '    ',
+        '      ',
+        '          ',
+        '         ',
+        '    ',
+        '   ',
+        '                        ',
+        '   ',
+        '                          ',
+        '       ',
+        '                           ',
+        '     ',
+        '                                ',
+        '                                ',
+        '                                ',
+        '                              ',
+        '                          ',
+        '           ',
+        '     '
+    ]
+    mexico = [
+        '       ',
+        '  ',
+        '  ',
+        '        ',
+        '         ',
+        '         ',
+        '      ',
+        '       ',
+    ]
+
+    if finished_countries[4]:
+        canada = fill_list(canada)
+    if finished_countries[22]:
+        usa = fill_list(usa)
+    if finished_countries[15]:
+        mexico = fill_list(mexico)
+
     print(Fore.YELLOW, end='')
     print('                                        @@@ @                    ')
     print('                                             @ @@@               ')
-    print('                                   @  @      @   @ @             ')
-    print('                                  @ @ @      @     @@@           ')
-    print('             @@@          @@          @ @@   @                   ')
-    print('         @@@    @           @    @@@         @       @           ')
-    print('      @@ @             @ @    @ @ @@         @@     @            ')
-    print('     @          @    @@  @  @ @@@@@     @                        ')
-    print('    @         @         @    @@@ @  @ @          @    @          ')
-    print('    @    @                @  @@     @      @                     ')
-    print('    @     @@                        @ @  @ @                     ')
-    print('           @@                   @  @     @@                      ')
-    print('                               @           @@                    ')
-    print('           @@                  @                  @@@            ')
-    print('                                  @     @            @           ')
-    print('          @                                      @@    @@        ')
-    print('            @                          @@      @@@               ')
-    print('             @                                @@   @@            ')
-    print('             @@    @@@@@@@@@@@@@@@@@          @                  ')
-    print('                                      @    @   @                 ')
-    print('            @                          @       @                 ')
-    print('           @                           @                         ')
-    print('                                            @                    ')
-    print('           @                                                     ')
-    print('           @                                @                    ')
-    print('            @                              @                     ')
-    print('              @                                                  ')
-    print('                @@@@@  @           @@  @   @                     ')
-    print('               @@       @@     @          @ @ @                  ')
-    print('                @  @        @                 @                  ')
-    print('                    @                     @@ @@                  ')
-    print('                   @  @                        @@             @  ')
-    print('                       @      @     @          @@               @')
-    print('                        @       @@@   @@                         ')
-    print('                            @        @@@@ @@                     ')
-    print('                                    @ @                          ')
-    print('                                         @@@                     ')
-    print('                                            @  @ @@              ')
+    print('                                   @  @          @ @             ')
+    print('                                  @ @ @            @@@           ')
+    print('             @@@          @@          @ @@                       ')
+    print(f'         @@@{usa[0]}@           @    @@@                 @           ')
+    print(f'      @@ @{usa[1]}@      @ @    @ @ @@         @@     @            ')
+    print(f'     @{usa[2]}@    @@  @  @ @@@@@     @                        ')
+    print(f'    @{usa[3]}@{canada[0]}@    @@@ @  @ @          @    @          ')
+    print(f'    @{usa[4]}@{usa[5]}@{canada[1]}@  @@     @      @                     ')
+    print(f'    @     @@ @{canada[2]}@ @  @ @                     ')
+    print(f'           @@{canada[3]}@  @     @@                      ')
+    print(f'          @{canada[4]}@           @@                    ')
+    print(f'           @@{canada[5]}@                  @@@            ')
+    print(f'          @{canada[6]}@     @{canada[7]}@           ')
+    print(f'          @{canada[8]}@@    @@        ')
+    print(f'            @{canada[9]}@@{canada[10]}@@@               ')
+    print(f'             @{canada[11]}@@   @@            ')
+    print(f'             @@@@@@@@@@@@@@@@@@@@@@@ @{canada[12]}@@@                  ')
+    print(f'             @{usa[6]}@ @@@@{usa[7]}@                 ')
+    print(f'            @{usa[8]}@{usa[9]}@                 ')
+    print(f'           @{usa[10]}@{usa[11]}@                   ')
+    print(f'           @{usa[12]}@                    ')
+    print(f'           @{usa[13]}@                    ')
+    print(f'           @{usa[14]}@                    ')
+    print(f'            @{usa[15]}@                     ')
+    print(f'              @{usa[16]}@                       ')
+    print(f'                @@@@@@@@{usa[17]}@@  @   @                     ')
+    print(f'               @@{mexico[0]}@@{usa[18]}@          @ @ @                  ')
+    print(f'                @{mexico[1]}@{mexico[3]}@                 @                  ')
+    print(f'                  {mexico[2]}@{mexico[4]}            @@ @@                  ')
+    print(f'                   @  @{mexico[5]}               @@             @  ')
+    print(f'                       @{mexico[6]}@     @          @@               @')
+    print(f'                        @{mexico[7]}@@@   @@                         ')
+    print(f'                            @        @@@@ @@                     ')
+    print(f'                                    @ @                          ')
+    print(f'                                         @@@                     ')
+    print(f'                                            @  @ @@              ')
 
 def south_america_map(finished_countries):
     """map of south america"""
