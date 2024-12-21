@@ -88,7 +88,7 @@ ASIA_INDEXES_ON_MAP = []
 EUROPE_INDEXES_ON_MAP = []
 NORTH_AMERICA_INDEXES_ON_MAP = []
 SOUTH_AMERICA_INDEXES_ON_MAP = []
-OCEANIA_INDEXES_ON_MAP = []
+OCEANIA_INDEXES_ON_MAP = [8, 0, 6]
 
 # asian countries
 ASIA = [
@@ -815,63 +815,120 @@ def south_america_map(finished_countries):
 
 def oceania_map(finished_countries):
     """map of oceania"""
+
+    papua_new_guinea = [
+        '    ',
+        '      ',
+        '        ',
+        '  ',
+        '  ',
+        ' ',
+    ]
+    australia = [
+        '   ',
+        '       ',
+        '  ',
+        '   ',
+        '       ',
+        '                ',
+        '     ',
+        '                    ',
+        '     ',
+        '                                ',
+        '                                  ',
+        '                                         ',
+        '                                              ',
+        '                                                 ',
+        '                                                   ',
+        '                                                    ',
+        '                                                     ',
+        '                                                     ',
+        '                                                    ',
+        '                                                   ',
+        '                                                   ',
+        '             ',
+        '                         ',
+        '          ',
+        '    ',
+        '                  ',
+        '    ',
+        '                ',
+        '             ',
+        '             ',
+        '         ',
+        '    ',
+        '  ',
+    ]
+    new_zealand = [
+        '  ',
+        '  ',
+        ' @',
+        '   @',
+    ]
+
+    if finished_countries[8]:
+        papua_new_guinea = fill_list(papua_new_guinea)
+    if finished_countries[0]:
+        australia = fill_list(australia)
+    if finished_countries[6]:
+        new_zealand = fill_list(new_zealand)
+
     print(Fore.BLUE, end='')
     print('                                                                                                    ')
     print('                                                                                                    ')
     print('                                                                                 %% %@              ')
-    print('                                                                      %%%         @%                ')
-    print('                                                                      %@%                           ')
+    print(f'                                                                      %%%         @%                ')
+    print(f'                                                                      %@%                           ')
     print('                                                                                                    ')
     print('                                                                                                    ')
     print('                                                                                                    ')
     print('                                                                                                    ')
-    print('                                                                               %                    ')
-    print('                                                     %%%  %%                                        ')
-    print('                                              % %%          %@%                                     ')
-    print('                                             @%    %%       %%%%                                    ')
-    print('                                             %      %@% %%%%@%   %%                                 ')
-    print('                                             %        %%          @%%                               ')
-    print('                                             %  @%%%%  @            %@%@%%                          ')
-    print('                                             %%%%    % %%%           @ %%@%                         ')
-    print('                                                      %@%@%%            @%@%         %%             ')
-    print('                             %%@%%%           %%                                                    ')
-    print('                             @%%%   %%%%     %%%%                                                   ')
-    print('                       %%%  %%       %       %  @                                                   ')
-    print('                     @%   %%%       %       %%  %%%                             %                   ')
-    print('                   %%                %@%    %     @                             %%                %%')
-    print('                %%%@                    %% %%     %                                   %%       %%@% ')
-    print('                @%                                %                                           %@%   ')
-    print('              %%                                  %%%                             %                 ')
-    print('       %%%%%                                         %                    %%% %%                    ')
-    print('    %%%                                              %%                    %%@%@%          %%       ')
-    print('   %%                                                 %@                                            ')
-    print('  %%                                                   %%                                           ')
-    print('  %%                                                    %%                                          ')
-    print('  @%                                                     %                                          ')
-    print('  %                                                     %                                           ')
-    print('  @%                                                    @                                           ')
-    print('  @%                                                   %%                                           ')
-    print('  %                                                   %%                                            ')
-    print('  %@             @ %%%%%%@%%                         %                                              ')
-    print('  %          %%@           %    %                  %%                                               ')
-    print('%%    %@%%%%@               %%%%%                %%                           %                     ')
-    print('  %%%                       %@%@%%             %%                             %%%                   ')
-    print('                             %  %             %                               @@%                   ')
-    print('                                %         %%%@                                %%%@%%                ')
-    print('                                  %@%%%@%                                  %%%  %%%                 ')
-    print('                                   %    %@                                 %@ %%                    ')
-    print('                                   %%%@%%                             %%@%@%%%                      ')
-    print('                                  %%  %@                            %% @%%                          ')
-    print('                                  %%%@                          %%%% %%                             ')
-    print('                                                            %%%% @%%              %                 ')
-    print('                                                          %%   @%                                   ')
-    print('                                                          %%%%                                      ')
-    print('                                                                                                    ')
+    print(f'                                                                               %                    ')
+    print(f'                                                     %%%  %%                                        ')
+    print(f'                                              %%%%          %@%                                     ')
+    print(f'                                             @%{papua_new_guinea[0]}%%       %%%%                                    ')
+    print(f'                                             %{papua_new_guinea[1]}%@% %%%%@%   %%                                 ')
+    print(f'                                             %{papua_new_guinea[2]}%%          @%%                               ')
+    print(f'                                             %{papua_new_guinea[3]}@%%%%{papua_new_guinea[4]}@            %@%@%%                          ')
+    print(f'                                             %%%%    % %%%           @{papua_new_guinea[5]}%%@%                         ')
+    print(f'                                                      %@%@%%            @%@%         %%             ')
+    print(f'                             %%@%%%           %%                                                    ')
+    print(f'                             @%%%{australia[0]}%%%%     %%%%                                                   ')
+    print(f'                       %%%  %%{australia[1]}%       %{australia[2]}@                                                   ')
+    print(f'                     @%{australia[3]}%%%       %{australia[4]}%%  %%%                             %                   ')
+    print(f'                   %%{australia[5]}%@%    %{australia[6]}@                             %%                %%')
+    print(f'                %%%@{australia[7]}%% %%{australia[8]}%                                   %%       %%@% ')
+    print(f'                @%{australia[9]}%                                           %@%   ')
+    print(f'              %%{australia[10]}%%%                             %                 ')
+    print(f'       %%%%%{australia[11]}%                    %%% %%                    ')
+    print(f'    %%%{australia[12]}%%                    %%@%@%          %%       ')
+    print(f'   %%{australia[13]}%@                                            ')
+    print(f'  %%{australia[14]}%%                                           ')
+    print(f'  %%{australia[15]}%%                                          ')
+    print(f'  @%{australia[16]}%                                          ')
+    print(f'  %{australia[17]}%                                           ')
+    print(f'  @%{australia[18]}@                                           ')
+    print(f'  @%{australia[19]}%%                                           ')
+    print(f'  %{australia[20]}%%                                            ')
+    print(f'  %@{australia[21]}@ %%%%%%@%%{australia[22]}%                                              ')
+    print(f'  %{australia[23]}%%@           %{australia[24]}%{australia[25]}%%                                               ')
+    print(f'%%{australia[26]}%@%%%%@               %%%%%{australia[27]}%%                           %                     ')
+    print(f'  %%%                       %@%@%%{australia[28]}%%                             %%%                   ')
+    print(f'                             %  %{australia[29]}%                               @@%                   ')
+    print(f'                                %{australia[30]}%%%@                                %%%@%%                ')
+    print(f'                                  %@%%%@%                                  %%%{new_zealand[0]}%%%                 ')
+    print(f'                                   %{australia[31]}%@                                 %{new_zealand[1]}%%                    ')
+    print(f'                                   %%%@%%                             %%@%@%%%                      ')
+    print(f'                                  %%{australia[32]}%@                            %% @%%                          ')
+    print(f'                                  %%%@                          %%%% %%                             ')
+    print(f'                                                            %%%%{new_zealand[2]}%%              %                 ')
+    print(f'                                                          %%{new_zealand[3]}%                                   ')
+    print(f'                                                          %%%%                                      ')
 
 def quiz(param):
     """country quiz"""
     end_game = False
-    INDEXES_ON_MAP = []
+    indexes_on_map = []
     country_set = []
     country_alt_set = []
     GIVEUP_COMMANDS = ['give up', 'giveup', 'forfeit', 'surrender', 'quit', 'i quit']
@@ -892,7 +949,7 @@ def quiz(param):
                 country_set.append(0) # blank entry
 
             finished_countries = [0] * len(country_set)
-            INDEXES_ON_MAP = AFRICA_INDEXES_ON_MAP
+            indexes_on_map = AFRICA_INDEXES_ON_MAP
         case 'asia':
             call_error(param, 'does_not_exist')
 
@@ -912,25 +969,29 @@ def quiz(param):
                 country_set.append(0) # blank entry
 
             finished_countries = [0] * len(country_set)
-            INDEXES_ON_MAP = EUROPE_INDEXES_ON_MAP
+            indexes_on_map = EUROPE_INDEXES_ON_MAP
         case 'north america':
             country_set = NORTH_AMERICA
             country_alt_set = NORTH_AMERICA_ALT
 
             finished_countries = [0] * len(country_set)
-            INDEXES_ON_MAP = NORTH_AMERICA_INDEXES_ON_MAP
+            indexes_on_map = NORTH_AMERICA_INDEXES_ON_MAP
         case 'south america':
             country_set = SOUTH_AMERICA
             country_alt_set = {}
 
             finished_countries = [0] * len(country_set)
-            INDEXES_ON_MAP = SOUTH_AMERICA_INDEXES_ON_MAP
+            indexes_on_map = SOUTH_AMERICA_INDEXES_ON_MAP
         case 'oceania':
             country_set = OCEANIA
             country_alt_set = {}
 
             finished_countries = [0] * len(country_set)
-            INDEXES_ON_MAP = OCEANIA_INDEXES_ON_MAP
+            indexes_on_map = OCEANIA_INDEXES_ON_MAP
+        case 'world':
+            call_error(param, 'does_not_exist')
+
+            return
         case _:
             return
     
@@ -971,13 +1032,13 @@ def quiz(param):
         print(Fore.GREEN)
         for i in range(1, len(listed_countries), 2): # iterates every two countries
             # countries not shown on the map are labelled
-            if listed_indexes[i-1] in INDEXES_ON_MAP:
+            if listed_indexes[i-1] in indexes_on_map:
                 print(f'~ {listed_countries[i-1]}   \t\t\t\t', end='')
             else:
                 print(f'~ {listed_countries[i-1]} (not shown on map)  \t', end='')
             
             # countries not shown on the map are labelled
-            if listed_indexes[i] in INDEXES_ON_MAP:
+            if listed_indexes[i] in indexes_on_map:
                 print(f'~ {listed_countries[i]}')
             else:
                 print(f'~ {listed_countries[i]} (not shown on map)')
@@ -985,7 +1046,7 @@ def quiz(param):
         # prints remainder if odd number of guessed countries
         if len(listed_countries) % 2 == 1:
             # countries not shown on the map are labelled
-            if listed_indexes[-1] in INDEXES_ON_MAP:
+            if listed_indexes[-1] in indexes_on_map:
                 print(f'~ {listed_countries[-1]}')
             else:
                 print(f'~ {listed_countries[-1]} (not shown on map)')
