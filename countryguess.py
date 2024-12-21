@@ -84,6 +84,11 @@ AFRICA_ALT = {
 }
 # list of indexes of all countries and territories on map
 AFRICA_INDEXES_ON_MAP = [34, 54, 0, 50, 28, 15, 32, 41, 31, 37, 38, 9, 47, 46, 19, 44, 55, 43, 27, 12, 23, 49, 2, 22, 7, 8, 25, 20, 11, 14, 48, 1, 52, 35, 36, 3, 53, 26, 45]
+ASIA_INDEXES_ON_MAP = []
+EUROPE_INDEXES_ON_MAP = []
+NORTH_AMERICA_INDEXES_ON_MAP = []
+SOUTH_AMERICA_INDEXES_ON_MAP = []
+OCEANIA_INDEXES_ON_MAP = []
 
 # asian countries
 ASIA = [
@@ -228,18 +233,18 @@ NORTH_AMERICA_ALT = {
 
 # south american countries
 SOUTH_AMERICA = [
-    'Argentina',
-    'Bolivia',
-    'Brazil',
-    'Chile',
-    'Colombia',
-    'Ecuador',
-    'Guyana',
-    'Paraguay',
-    'Peru',
-    'Suriname',
-    'Uruguay',
-    'Venezuela',
+    'argentina',
+    'bolivia',
+    'brazil',
+    'chile',
+    'colombia',
+    'ecuador',
+    'guyana',
+    'paraguay',
+    'peru',
+    'suriname',
+    'uruguay',
+    'venezuela',
 ]
 
 # oceania
@@ -279,7 +284,6 @@ OTHER_DISPUTED_TERRITORIES = [
 # unrecognised territories
 UNRECOGNISED_TERRITORIES = [
     'somaliland',
-    'northern cyprus',
 ]
 
 
@@ -340,6 +344,8 @@ def fill_list(param=[' '], fill='#'):
     return filledList
 
 def africa_map(finished_countries):
+    """map of africa"""
+
     morocco = [
         ' ',
         ' ',
@@ -675,6 +681,7 @@ def africa_map(finished_countries):
     print(f'                            \\{south_africa[6]}/        FoulWing')
 
 def europe_map(finished_countries):
+    """map of europe"""
     print(Fore.MAGENTA, end='')
     print(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::                               ')
     print(':::::::::::::::::::::::::::::::::::::::::::::::@:+@ *:::::::::::  @:                                ')
@@ -723,6 +730,89 @@ def europe_map(finished_countries):
     print('::::::   :::::::+*                   %::::::::::::::::::::::::    ::::::::::::::::::                ')
     print('::::                                  ::::::::::::::::::::::::::::::::::::::::::::::                ')
 
+def north_america_map(finished_countries):
+    """map of north america"""
+    print(Fore.YELLOW, end='')
+    print('                                        @@@ @                    ')
+    print('                                             @ @@@               ')
+    print('                                   @  @      @   @ @             ')
+    print('                                  @ @ @      @     @@@           ')
+    print('             @@@          @@          @ @@   @                   ')
+    print('         @@@    @           @    @@@         @       @           ')
+    print('      @@ @             @ @    @ @ @@         @@     @            ')
+    print('     @          @    @@  @  @ @@@@@     @                        ')
+    print('    @         @         @    @@@ @  @ @          @    @          ')
+    print('    @    @                @  @@     @      @                     ')
+    print('    @     @@                        @ @  @ @                     ')
+    print('           @@                   @  @     @@                      ')
+    print('                               @           @@                    ')
+    print('           @@                  @                  @@@            ')
+    print('                                  @     @            @           ')
+    print('          @                                      @@    @@        ')
+    print('            @                          @@      @@@               ')
+    print('             @                                @@   @@            ')
+    print('             @@    @@@@@@@@@@@@@@@@@          @                  ')
+    print('                                      @    @   @                 ')
+    print('            @                          @       @                 ')
+    print('           @                           @                         ')
+    print('                                            @                    ')
+    print('           @                                                     ')
+    print('           @                                @                    ')
+    print('            @                              @                     ')
+    print('              @                                                  ')
+    print('                @@@@@  @           @@  @   @                     ')
+    print('               @@       @@     @          @ @ @                  ')
+    print('                @  @        @                 @                  ')
+    print('                    @                     @@ @@                  ')
+    print('                   @  @                        @@             @  ')
+    print('                       @      @     @          @@               @')
+    print('                        @       @@@   @@                         ')
+    print('                            @        @@@@ @@                     ')
+    print('                                    @ @                          ')
+    print('                                         @@@                     ')
+    print('                                            @  @ @@              ')
+
+def south_america_map(finished_countries):
+    """map of south america"""
+    print(Fore.GREEN, end='')
+    print(':::::::::::::::::: :::::::::::::::::::::::::::::::')
+    print(':::::::::::::::   :        :::::::::::::::::::::::')
+    print('::::::::::::::              @:::::::::::::::::::::')
+    print('::::::::::::::             @@     ::::::::::::::::')
+    print('::::::::::::::              @@@     ::::::::::::::')
+    print('::::::::::::          =             @:::::::::::::')
+    print(':::::::::::     =                       ::::::::::')
+    print(':::::::::::+                %                 ::::')
+    print(':::::::::::                                      :')
+    print('::::::::::::                                      ')
+    print(':::::::::::::                              :     :')
+    print('::::::::::::::                                 :::')
+    print(':::::::::::::::                               ::::')
+    print(':::::::::::::::::   :                         ::::')
+    print(':::::::::::::::::::                           ::::')
+    print('::::::::::::::::::::                         :::::')
+    print('::::::::::::::::::::              :         ::::::')
+    print(':::::::::::::::::::  @                 :::::::::::')
+    print(':::::::::::::::::::                   ::::::::::::')
+    print(':::::::::::::::::::                   ::::::::::::')
+    print(':::::::::::::::::::       :          :::::::::::::')
+    print(':::::::::::::::::::              % :::::::::::::::')
+    print('::::::::::::::::::                ::::::::::::::::')
+    print(':::::::::::::::::: :           :::::::::::::::::::')
+    print(':::::::::::::::::              :::::::::::::::::::')
+    print(':::::::::::::::::         ::::::::::::::::::::::::')
+    print('::::::::::::::::: %       ::::::::::::::::::::::::')
+    print(':::::::::::::::: :       :::::::::::::::::::::::::')
+    print(':::::::::::::::::       ::::::::::::::::::::::::::')
+    print('::::::::::::::::      ::::::::::::::::::::::::::::')
+    print('::::::::::::::::       :::::::::::::::::::::::::::')
+    print(':::::::::::::::  @    +:::::::::::::::::::::::::::')
+    print('::::::::::::::::@     ::::::::::::::::::::::::::::')
+    print(':::::::::::::::@:    :::::::-@::::::::::::::::::::')
+    print(':::::::::::::::::@=: :::::::::::::::::::::::::::::')
+    print('::::::::::::::::: ::  ::::::::::::::::::::::::::::')
+    print('::::::::::::::::::::-:::::::::::::::::::::::::::::')
+
 def quiz(param):
     """country quiz"""
     end_game = False
@@ -762,14 +852,21 @@ def quiz(param):
             else:
                 country_set.append(0) # blank entry
 
-            if show_unrecognised_territories: # adds northern cyprus if required
-                country_set.append(UNRECOGNISED_TERRITORIES[1])
-            else:
-                country_set.append(0) # blank entry
+            finished_countries = [0] * len(country_set)
+            INDEXES_ON_MAP = EUROPE_INDEXES_ON_MAP
+        case 'north america':
+            country_set = NORTH_AMERICA
+            country_alt_set = NORTH_AMERICA_ALT
 
             finished_countries = [0] * len(country_set)
-            # INDEXES_ON_MAP = EUROPE_INDEXES_ON_MAP
-        case 'asia' | 'north america' | 'south america' | 'oceania':
+            INDEXES_ON_MAP = NORTH_AMERICA_INDEXES_ON_MAP
+        case 'south america':
+            country_set = SOUTH_AMERICA
+            country_alt_set = {}
+
+            finished_countries = [0] * len(country_set)
+            INDEXES_ON_MAP = SOUTH_AMERICA_INDEXES_ON_MAP
+        case 'asia' | 'oceania':
             call_error(param, 'does_not_exist')
 
             return
@@ -795,10 +892,15 @@ def quiz(param):
 
         print('\033c', end='') # clear terminal
 
-        if userInput == 'africa':
-            africa_map(finished_countries)
-        elif userInput == 'europe':
-            europe_map(finished_countries)
+        match userInput:
+            case 'africa':
+                africa_map(finished_countries)
+            case 'europe':
+                europe_map(finished_countries)
+            case 'north america':
+                north_america_map(finished_countries)
+            case 'south america':
+                south_america_map(finished_countries)
 
         # prints pairs of countries 
         print(Fore.GREEN)
