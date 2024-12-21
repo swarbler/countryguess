@@ -338,6 +338,7 @@ def dotdotdot(length=1, interval=.5):
 def fill_list(param=[' '], fill='#'):
     filledList = []
 
+    # iterates over every element in the list to replace with fill
     for i in param:
         filledList.append(len(i) * fill)
     
@@ -927,10 +928,15 @@ def oceania_map(finished_countries):
 
 def quiz(param):
     """country quiz"""
+    # declares variables
     end_game = False
+
+    # declares lists
     indexes_on_map = []
     country_set = []
     country_alt_set = []
+
+    # constants
     GIVEUP_COMMANDS = ['give up', 'giveup', 'forfeit', 'surrender', 'quit', 'i quit']
 
     match param:
@@ -988,10 +994,6 @@ def quiz(param):
 
             finished_countries = [0] * len(country_set)
             indexes_on_map = OCEANIA_INDEXES_ON_MAP
-        case 'world':
-            call_error(param, 'does_not_exist')
-
-            return
         case _:
             return
     
@@ -1098,6 +1100,10 @@ def quiz(param):
     # waits for user to exit
     input('~~> ')
 
+def world_quiz():
+    """countries of the world quiz"""
+    pass
+
 
 #* program *#
 
@@ -1132,14 +1138,12 @@ while True:
 
     match userInput:
         case 'countries of the world' | 'countries' | 'world':
-            quiz('world')
-
-            print('\033c', end='') # clear terminal
+            call_error(userInput, 'does_not_exist')
         case 'africa' | 'asia' | 'europe' | 'north america' | 'south america' | 'oceania':
             quiz(userInput)
 
             print('\033c', end='') # clear terminal
-        case 'find':
+        case 'find' | 'find a country' | 'find country':
             print(Fore.CYAN)
             print('please enter a country')
             userInput = input('~~> ')
@@ -1171,7 +1175,6 @@ while True:
 
             print('\033c', end='') # clear terminal
         case 'options' | 'settings':
-
             print('\033c', end='') # clear terminal
         case 'quit':
             sys.exit(0)
