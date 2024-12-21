@@ -813,6 +813,61 @@ def south_america_map(finished_countries):
     print('::::::::::::::::: ::  ::::::::::::::::::::::::::::')
     print('::::::::::::::::::::-:::::::::::::::::::::::::::::')
 
+def oceania_map(finished_countries):
+    """map of oceania"""
+    print(Fore.BLUE, end='')
+    print('                                                                                                    ')
+    print('                                                                                                    ')
+    print('                                                                                 %% %@              ')
+    print('                                                                      %%%         @%                ')
+    print('                                                                      %@%                           ')
+    print('                                                                                                    ')
+    print('                                                                                                    ')
+    print('                                                                                                    ')
+    print('                                                                                                    ')
+    print('                                                                               %                    ')
+    print('                                                     %%%  %%                                        ')
+    print('                                              % %%          %@%                                     ')
+    print('                                             @%    %%       %%%%                                    ')
+    print('                                             %      %@% %%%%@%   %%                                 ')
+    print('                                             %        %%          @%%                               ')
+    print('                                             %  @%%%%  @            %@%@%%                          ')
+    print('                                             %%%%    % %%%           @ %%@%                         ')
+    print('                                                      %@%@%%            @%@%         %%             ')
+    print('                             %%@%%%           %%                                                    ')
+    print('                             @%%%   %%%%     %%%%                                                   ')
+    print('                       %%%  %%       %       %  @                                                   ')
+    print('                     @%   %%%       %       %%  %%%                             %                   ')
+    print('                   %%                %@%    %     @                             %%                %%')
+    print('                %%%@                    %% %%     %                                   %%       %%@% ')
+    print('                @%                                %                                           %@%   ')
+    print('              %%                                  %%%                             %                 ')
+    print('       %%%%%                                         %                    %%% %%                    ')
+    print('    %%%                                              %%                    %%@%@%          %%       ')
+    print('   %%                                                 %@                                            ')
+    print('  %%                                                   %%                                           ')
+    print('  %%                                                    %%                                          ')
+    print('  @%                                                     %                                          ')
+    print('  %                                                     %                                           ')
+    print('  @%                                                    @                                           ')
+    print('  @%                                                   %%                                           ')
+    print('  %                                                   %%                                            ')
+    print('  %@             @ %%%%%%@%%                         %                                              ')
+    print('  %          %%@           %    %                  %%                                               ')
+    print('%%    %@%%%%@               %%%%%                %%                           %                     ')
+    print('  %%%                       %@%@%%             %%                             %%%                   ')
+    print('                             %  %             %                               @@%                   ')
+    print('                                %         %%%@                                %%%@%%                ')
+    print('                                  %@%%%@%                                  %%%  %%%                 ')
+    print('                                   %    %@                                 %@ %%                    ')
+    print('                                   %%%@%%                             %%@%@%%%                      ')
+    print('                                  %%  %@                            %% @%%                          ')
+    print('                                  %%%@                          %%%% %%                             ')
+    print('                                                            %%%% @%%              %                 ')
+    print('                                                          %%   @%                                   ')
+    print('                                                          %%%%                                      ')
+    print('                                                                                                    ')
+
 def quiz(param):
     """country quiz"""
     end_game = False
@@ -866,7 +921,13 @@ def quiz(param):
 
             finished_countries = [0] * len(country_set)
             INDEXES_ON_MAP = SOUTH_AMERICA_INDEXES_ON_MAP
-        case 'asia' | 'oceania':
+        case 'oceania':
+            country_set = OCEANIA
+            country_alt_set = {}
+
+            finished_countries = [0] * len(country_set)
+            INDEXES_ON_MAP = OCEANIA_INDEXES_ON_MAP
+        case 'asia':
             call_error(param, 'does_not_exist')
 
             return
@@ -901,6 +962,8 @@ def quiz(param):
                 north_america_map(finished_countries)
             case 'south america':
                 south_america_map(finished_countries)
+            case 'oceania':
+                oceania_map(finished_countries)
 
         # prints pairs of countries 
         print(Fore.GREEN)
