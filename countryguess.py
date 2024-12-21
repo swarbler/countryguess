@@ -756,7 +756,7 @@ def europe_map(finished_countries):
     if finished_countries[17]:
         ireland = fill_list(ireland)
     if finished_countries[38]:
-        spain = fill_list[spain]
+        spain = fill_list(spain)
     if finished_countries[31]:
         portugal = fill_list(portugal)
     if finished_countries[18]:
