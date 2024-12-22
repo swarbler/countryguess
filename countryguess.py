@@ -85,7 +85,7 @@ AFRICA_ALT = {
 # list of indexes of all countries and territories on map
 AFRICA_INDEXES_ON_MAP = [34, 54, 0, 50, 28, 15, 32, 41, 31, 37, 38, 9, 47, 46, 19, 44, 55, 43, 27, 12, 23, 49, 2, 22, 7, 8, 25, 20, 11, 14, 48, 1, 52, 35, 36, 3, 53, 26, 45]
 ASIA_INDEXES_ON_MAP = []
-EUROPE_INDEXES_ON_MAP = [16, 29, 39, 11, 9, 42, 17, 38, 31, 18, 33]
+EUROPE_INDEXES_ON_MAP = [16, 29, 39, 11, 9, 42, 17, 38, 31, 4, 27, 12, 40, 18, 33]
 NORTH_AMERICA_INDEXES_ON_MAP = [4, 22, 15]
 SOUTH_AMERICA_INDEXES_ON_MAP = []
 OCEANIA_INDEXES_ON_MAP = [8, 0, 6]
@@ -750,7 +750,6 @@ def europe_map(finished_countries):
         ' ',
         '   ',
         ' ',
-        '   ',
     ]
     uk = [
         ' ',
@@ -774,8 +773,7 @@ def europe_map(finished_countries):
     ]
     spain = [
         '      ',
-        '                      ',
-        '     ',
+        '                    ',
         '                ',
         '                 ',
         '              ',
@@ -792,6 +790,27 @@ def europe_map(finished_countries):
         '     ',
         '    ',
         '  ',
+    ]
+    netherlands = ['   ', '   ']
+    belgium = ['    ', '  ']
+    france = [
+        '    ',
+        '       ',
+        '   ',
+        '           ',
+        '                  ',
+        '              ',
+        '             ',
+        '             ',
+        '               ',
+        '                ',
+        '        ',
+        '  ', # corsica
+    ]
+    switzerland = [
+        '     ',
+        '       ',
+        '    ',
     ]
     italy = [
         '       ',
@@ -850,6 +869,14 @@ def europe_map(finished_countries):
         spain = fill_list(spain)
     if finished_countries[31]:
         portugal = fill_list(portugal)
+    if finished_countries[27]:
+        netherlands = fill_list(netherlands)
+    if finished_countries[4]:
+        belgium = fill_list(belgium)
+    if finished_countries[12]:
+        france = fill_list(france)
+    if finished_countries[40]:
+        switzerland = fill_list(switzerland)
     if finished_countries[18]:
         italy = fill_list(italy)
     if finished_countries[33]:
@@ -878,27 +905,27 @@ def europe_map(finished_countries):
     print(f':::::::::::::::@@{uk[4]}@::::::::::::::@@{denmark[1]}:::{sweden[15]}@:::::       @                                          ')
     print(f'::::::::::::{uk[5]}={uk[6]}:::::::::::::{denmark[2]}:={sweden[16]}:::::::::      @                                          ')
     print(f':::::::::{uk[7]}{ireland[0]}:::@{uk[8]}:::::::::::::{denmark[3]}:::::::::::@:=                @                      @         :')
-    print(f':::::::::@{ireland[1]}=::::{uk[9]}:::::::::::={denmark[4]}:@ :::                                             .@     ::::')
-    print(f'::::::::@{ireland[2]}:::{uk[10]}:::::::@@                                        =    *@                :::::')
-    print(f':::::::::::::::{uk[11]}::::@@                                                                :::::')
-    print(f':::::::::::::::@{uk[12]}::::    @                                                              ::::::')
-    print(f'::::::::::::::::@:::::::      @            @                                    :             ::::::')
-    print(f'::::::::::::::::::: ::@                @                                      :                 ::::')
-    print(f'::::::::::::::   ::                             =                           ::::                  ::')
-    print(f':::::::::::::::@                                                     :: @  ::@:                     ')
-    print(f':::::::::::::::::@              @             :                     ::::    @:::::::@               ')
-    print(f'::::::::::::::::::                                               @  :::::::::::::::::::::           ')
-    print(f':::::::::::::::::::                 @        @  :                  ::::::::::::::::::::::           ')
-    print(f'::::::::::::::::::               {italy[0]}:: :            %          :::::::::::::::::::              ')
-    print(f'::::+{spain[0]}:::::::                {italy[1]}::::#                     :::::::::                   =   @ ')
-    print(f'::::{spain[1]}#{spain[2]}:::::{italy[2]}::::     @  =            ::::::                        @ @')
-    print(f'::::{portugal[0]}@{spain[3]}::::::::::@:%{italy[3]}:::::::@     =@                                          ')
-    print(f'::::{portugal[1]}{spain[4]}:::::::::  :::{italy[4]}:@:::::: *   @   :*@ : @                               ')
-    print(f'::{portugal[2]}{spain[5]}::::::::::::::::::::::@{italy[5]}::::  @  * *=:::                                   ')
-    print(f'::{portugal[3]}{spain[6]}::::::::::::::={italy[6]}:::::::::{italy[7]}::=:::     ::::::                  @ @              ')
-    print(f'::{portugal[4]}{spain[7]}:::::@::::::::::{italy[8]}:::::::::::{italy[9]}::::::@   :  ::::@              :::                ')
-    print(f':::{portugal[5]}{spain[8]}::::::::::::::::::::::::::::::{italy[10]}::::::: :   : :::@::@     :::@@::=::@               ')
-    print(f'::::::{portugal[6]}{spain[9]}::::::::::::::::::::::::::{italy[11]}::::::::::::  ::::@:@:  :::::::::  ::::               ')
+    print(f':::::::::@{ireland[1]}=::::{uk[9]}:::::::::::=   :@ :::                                             .@     ::::')
+    print(f'::::::::@{ireland[2]}:::{uk[10]}:::::::{netherlands[0]}                                       =    *@                :::::')
+    print(f':::::::::::::::{uk[11]}::::{netherlands[1]}                                                               :::::')
+    print(f':::::::::::::::@{uk[12]}::::{belgium[0]}@                                                              ::::::')
+    print(f'::::::::::::::::@:::::::{france[0]}{belgium[1]}@            @                                    :             ::::::')
+    print(f'::::::::::::::::::::::@{france[1]}         @                                      :                 ::::')
+    print(f'::::::::::::::{france[2]}::{france[3]}                  =                           ::::                  ::')
+    print(f':::::::::::::::@{france[4]}                                   :: @  ::@:                     ')
+    print(f':::::::::::::::::@{france[5]}@{switzerland[0]}        :                     ::::    @:::::::@               ')
+    print(f'::::::::::::::::::{france[6]}{switzerland[1]}                           @  :::::::::::::::::::::           ')
+    print(f':::::::::::::::::::{france[7]}{switzerland[2]}@        @  :                  ::::::::::::::::::::::           ')
+    print(f'::::::::::::::::::{france[8]}{italy[0]}:: :            %          :::::::::::::::::::              ')
+    print(f'::::+{spain[0]}:::::::{france[9]}{italy[1]}::::#                     :::::::::                   =   @ ')
+    print(f'::::{spain[1]}{france[10]}:::::{italy[2]}::::     @  =            ::::::                        @ @')
+    print(f'::::{portugal[0]}@{spain[2]}::::::::::@:%{italy[3]}:::::::@     =@                                          ')
+    print(f'::::{portugal[1]}{spain[3]}:::::::::{france[11]}:::{italy[4]}:@:::::: *   @   :*@ : @                               ')
+    print(f'::{portugal[2]}{spain[4]}::::::::::::::::::::::@{italy[5]}::::  @  * *=:::                                   ')
+    print(f'::{portugal[3]}{spain[5]}::::::::::::::={italy[6]}:::::::::{italy[7]}::=:::     ::::::                  @ @              ')
+    print(f'::{portugal[4]}{spain[6]}:::::@::::::::::{italy[8]}:::::::::::{italy[9]}::::::@   :  ::::@              :::                ')
+    print(f':::{portugal[5]}{spain[7]}::::::::::::::::::::::::::::::{italy[10]}::::::: :   : :::@::@     :::@@::=::@               ')
+    print(f'::::::{portugal[6]}{spain[8]}::::::::::::::::::::::::::{italy[11]}::::::::::::  ::::@:@:  :::::::::  ::::               ')
     print(f':::::::::::::::::::::::::::::::::::  ::::::@{italy[12]}:::::::::::::: :::::::@::::::::::::::::               ')
     print(f'::::::   :::::::+*                   %::::::::::::::::::::::::    ::::::::::::::::::                ')
     print(f'::::                                  ::::::::::::::::::::::::::::::::::::::::::::::                ')
