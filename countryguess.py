@@ -85,7 +85,7 @@ AFRICA_ALT = {
 # list of indexes of all countries and territories on map
 AFRICA_INDEXES_ON_MAP = [34, 54, 0, 50, 28, 15, 32, 41, 31, 37, 38, 9, 47, 46, 19, 44, 55, 43, 27, 12, 23, 49, 2, 22, 7, 8, 25, 20, 11, 14, 48, 1, 52, 35, 36, 3, 53, 26, 45]
 ASIA_INDEXES_ON_MAP = []
-EUROPE_INDEXES_ON_MAP = [16, 41, 17, 38, 31, 18]
+EUROPE_INDEXES_ON_MAP = [16, 29, 39, 11, 9, 42, 17, 38, 31, 18, 33]
 NORTH_AMERICA_INDEXES_ON_MAP = [4, 22, 15]
 SOUTH_AMERICA_INDEXES_ON_MAP = []
 OCEANIA_INDEXES_ON_MAP = [8, 0, 6]
@@ -190,6 +190,7 @@ EUROPE = [
     'slovakia',
     'slovenia',
     'spain',
+    'sweden',
     'switzerland',
     'ukraine',
     'united kingdom',
@@ -692,6 +693,65 @@ def europe_map(finished_countries):
         '        ',
         '       ',
     ]
+    norway = [
+        '   ',
+        '    ',
+        '   ',
+        '  ',
+        '  ',
+        ' ',
+        '   ',
+        '   ',
+        '   ',
+        '   ',
+        '      ',
+        '       ',
+        '       ',
+        '        ',
+        '     ',
+        '   ',
+    ]
+    sweden = [
+        '    ',
+        '     ',
+        '       ',
+        '       ',
+        '      ',
+        '       ',
+        '        ',
+        '      ',
+        '     ',
+        '      ',
+        '      ',
+        '       ',
+        '    ',
+        '       ',
+        '     ',
+        '    ',
+        '   ',
+    ]
+    finland = [
+        '      ',
+        '     ',
+        '      ',
+        '      ',
+        '       ',
+        '        ',
+        '       ',
+        '    ',
+        '  ',
+        '     ',
+        '     ',
+        '       ',
+        '  ',
+    ]
+    denmark = [
+        ' ',
+        ' ',
+        '   ',
+        ' ',
+        '   ',
+    ]
     uk = [
         ' ',
         '   ',
@@ -748,10 +808,41 @@ def europe_map(finished_countries):
         '     ',
         '  ',
     ]
+    russia = [
+        '                               ',
+        '                                ',
+        '        ',
+        '                                ',
+        '          ',
+        '                                 ',
+        '        ',
+        '                                   ',
+        '  ',
+        '                                    ',
+        '   ',
+        '                                   ',
+        '   ',
+        '                                    ',
+        '                                         ',
+        '                                           ',
+        '    ',
+        '                                    ',
+        '      ',
+        '                                   ',
+        '                                      ',
+    ]
 
     if finished_countries[16]:
         iceland = fill_list(iceland)
-    if finished_countries[41]:
+    if finished_countries[29]:
+        norway = fill_list(norway)
+    if finished_countries[39]:
+        sweden = fill_list(sweden)
+    if finished_countries[11]:
+        finland = fill_list(finland)
+    if finished_countries[9]:
+        denmark = fill_list(denmark)
+    if finished_countries[42]:
         uk = fill_list(uk)
     if finished_countries[17]:
         ireland = fill_list(ireland)
@@ -761,31 +852,33 @@ def europe_map(finished_countries):
         portugal = fill_list(portugal)
     if finished_countries[18]:
         italy = fill_list(italy)
+    if finished_countries[33]:
+        russia = fill_list(russia)
 
     print(Fore.MAGENTA, end='')
-    print(':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::                               ')
-    print(f':::::::::::::::::::::::::::::::::::::::::::::::@:+@ *:::::::::::  @:                                ')
-    print(f':::::::::::::::::::::::::::::::::::::::::::::@:  @ .        :::::  :                                ')
-    print(f':::::::::::::::::::::::::::::::::::::::::::@                    :::                                 ')
-    print(f':::::{iceland[0]}::::::::::::::::::::::::::::::::+::                    ::                                   ')
-    print(f':::::{iceland[1]}@{iceland[2]}:{iceland[3]}::::::::::::::::::::::::::@::               :::::::                                    ')
-    print(f':::::@{iceland[4]}:::::::::::::::::::::::::::                  %:: ::                                   ')
-    print(f'::::::{iceland[5]}::::::::::::::::::::::::::# %       +          +:::                                    ')
-    print(f':::::::::::::::::::::::::::::::::::::::         ::@                                                 ')
-    print(f'::::::::::::::::::::::::::::::::::::::          ::                                                  ')
-    print(f'::::::::::::::::::::::::::::::::::::           ::    :%  @    ::                                    ')
-    print(f'::::::::::::::::::-::::::::::::::::   %      :::     : @@@      :                                   ')
-    print(f':::::::::::::::::::::::::::::::::           @:::%  =  *@: =:::                                      ')
-    print(f':::::::::::::::::::::::::::::::             :::::       :   :                                       ')
-    print(f':::::::::::::::::::::::@:::::::@             ::::::  ::::                                           ')
-    print(f'::::::::::::::::::::::::::::::::               ::::::   %    @                                      ')
-    print(f'::::::::::::::::{uk[0]}:{uk[1]}:::::::::::     @@ :    ::::::+:                                           *   ')
-    print(f'::::::::::::::::{uk[2]}:::::::::::::   :::       :::::::::                                              ')
-    print(f'::::::::::::::::@{uk[3]}::::::::::::::: ::     @: :::%                                                 ')
-    print(f':::::::::::::::@@{uk[4]}@::::::::::::::@@ :::    @:::::       @                                          ')
-    print(f'::::::::::::{uk[5]}={uk[6]}:::::::::::::   :=   :::::::::      @                                          ')
-    print(f':::::::::{uk[7]}{ireland[0]}:::@{uk[8]}::::::::::::: :::::::::::@:=                @                      @         :')
-    print(f':::::::::@{ireland[1]}=::::{uk[9]}:::::::::::=   :@ :::                                             .@     ::::')
+    print(f':::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::{russia[0]}')
+    print(f':::::::::::::::::::::::::::::::::::::::::::::::@:+@ *:::::::::::  @:{russia[1]}')
+    print(f':::::::::::::::::::::::::::::::::::::::::::::@:{norway[0]}@.{russia[2]}:::::  :{russia[3]}')
+    print(f':::::::::::::::::::::::::::::::::::::::::::@{norway[1]}{finland[0]}{russia[4]}:::{russia[5]}')
+    print(f':::::{iceland[0]}::::::::::::::::::::::::::::::::+::{norway[2]}{sweden[0]}{finland[1]}{russia[6]}::{russia[7]}')
+    print(f':::::{iceland[1]}@{iceland[2]}:{iceland[3]}::::::::::::::::::::::::::@::{norway[3]}{sweden[1]}{finland[2]}{russia[8]}:::::::{russia[9]}')
+    print(f':::::@{iceland[4]}:::::::::::::::::::::::::::{norway[4]}{sweden[2]}{finland[3]}{russia[10]}%:: ::{russia[11]}')
+    print(f'::::::{iceland[5]}:::::::::::::::::::::::::::{norway[5]}%{sweden[3]}+{finland[4]}{russia[12]}+:::{russia[13]}')
+    print(f':::::::::::::::::::::::::::::::::::::::{norway[6]}{sweden[4]}::@{finland[5]}{russia[14]}')
+    print(f'::::::::::::::::::::::::::::::::::::::{norway[7]}{sweden[5]}::{finland[6]}{russia[15]}')
+    print(f'::::::::::::::::::::::::::::::::::::{norway[8]}{sweden[6]}::{finland[7]}:%{finland[8]}@{russia[16]}::{russia[17]}')
+    print(f'::::::::::::::::::-::::::::::::::::{norway[9]}%{sweden[7]}:::{finland[9]}::@@@{russia[18]}:{russia[19]}')
+    print(f':::::::::::::::::::::::::::::::::{norway[10]}{sweden[8]}@:::%{finland[10]}*@: =:::{russia[20]}')
+    print(f':::::::::::::::::::::::::::::::{norway[11]}{sweden[9]}:::::{finland[11]}:   :                                       ')
+    print(f':::::::::::::::::::::::@:::::::@{norway[12]}{sweden[10]}::::::{finland[12]}::::                                           ')
+    print(f'::::::::::::::::::::::::::::::::{norway[13]}{sweden[11]}::::::   %    @                                      ')
+    print(f'::::::::::::::::{uk[0]}:{uk[1]}:::::::::::{norway[14]}@@ :{sweden[12]}::::::+:                                           *   ')
+    print(f'::::::::::::::::{uk[2]}:::::::::::::{norway[15]}:::{sweden[13]}:::::::::                                              ')
+    print(f'::::::::::::::::@{uk[3]}:::::::::::::::{denmark[0]}::{sweden[14]}@: :::%                                                 ')
+    print(f':::::::::::::::@@{uk[4]}@::::::::::::::@@{denmark[1]}:::{sweden[15]}@:::::       @                                          ')
+    print(f'::::::::::::{uk[5]}={uk[6]}:::::::::::::{denmark[2]}:={sweden[16]}:::::::::      @                                          ')
+    print(f':::::::::{uk[7]}{ireland[0]}:::@{uk[8]}:::::::::::::{denmark[3]}:::::::::::@:=                @                      @         :')
+    print(f':::::::::@{ireland[1]}=::::{uk[9]}:::::::::::={denmark[4]}:@ :::                                             .@     ::::')
     print(f'::::::::@{ireland[2]}:::{uk[10]}:::::::@@                                        =    *@                :::::')
     print(f':::::::::::::::{uk[11]}::::@@                                                                :::::')
     print(f':::::::::::::::@{uk[12]}::::    @                                                              ::::::')
@@ -1314,3 +1407,32 @@ while True:
             sys.exit(0)
         case _: # invalid input
             call_error(userInput)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
