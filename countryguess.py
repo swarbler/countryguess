@@ -5,9 +5,9 @@ from art import *
 
 #* declares variables *#
 
-show_observer_states = True
-show_disputed_territories = True
-show_somaliland = True
+show_observer_states = False
+show_disputed_territories = False
+show_somaliland = False
 
 
 #* declares country lists *#
