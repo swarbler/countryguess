@@ -85,7 +85,7 @@ AFRICA_ALT = {
 # list of indexes of all countries and territories on map
 AFRICA_INDEXES_ON_MAP = [34, 54, 0, 50, 28, 15, 32, 41, 31, 37, 38, 9, 47, 46, 19, 44, 55, 43, 27, 12, 23, 49, 2, 22, 7, 8, 25, 20, 11, 14, 48, 1, 52, 35, 36, 3, 53, 26, 45]
 ASIA_INDEXES_ON_MAP = []
-EUROPE_INDEXES_ON_MAP = [16, 29, 39, 11, 9, 42, 17, 38, 31, 4, 27, 12, 13, 40, 18, 33]
+EUROPE_INDEXES_ON_MAP = [16, 29, 39, 11, 9, 42, 17, 38, 31, 4, 27, 12, 13, 8, 40, 18, 30, 10, 19, 21, 3, 33]
 NORTH_AMERICA_INDEXES_ON_MAP = [4, 22, 15]
 SOUTH_AMERICA_INDEXES_ON_MAP = []
 OCEANIA_INDEXES_ON_MAP = [8, 0, 6]
@@ -818,6 +818,11 @@ def europe_map(finished_countries):
         '        ',
         '          ',
     ]
+    czechia = [
+        '       ',
+        '        ',
+        '     ',
+    ]
     switzerland = ['       ', '    ']
     italy = [
         '       ',
@@ -833,6 +838,23 @@ def europe_map(finished_countries):
         ' ',
         '     ',
         '  ',
+    ]
+    poland = [
+        '            ',
+        '             ',
+        '             ',
+        '             ',
+        '            ',
+    ]
+    estonia = ['   %    ', '         ']
+    latvia = ['           ', '             ']
+    lithuania = ['       ', '      ']
+    belarus = [
+        '   ',
+        '             ',
+        '               ',
+        '           ',
+        '             ',
     ]
     russia = [
         '                               ',
@@ -862,8 +884,8 @@ def europe_map(finished_countries):
         '                                      ',
         '                                      ',
         '                                  *   ',
-        '                               ',
-        '                              ',
+        '                                   ',
+        '                                 ',
         '                             ',
         '                           ',
         '                 @         ',
@@ -877,7 +899,8 @@ def europe_map(finished_countries):
         '                     ',
         '               ',
         '           ',
-        '    '
+        '    ',
+        '     ', # kaliningrad
     ]
 
     if finished_countries[16]:
@@ -906,10 +929,22 @@ def europe_map(finished_countries):
         france = fill_list(france)
     if finished_countries[13]:
         germany = fill_list(germany)
+    if finished_countries[8]:
+        czechia = fill_list(czechia)
     if finished_countries[40]:
         switzerland = fill_list(switzerland)
     if finished_countries[18]:
         italy = fill_list(italy)
+    if finished_countries[30]:
+        poland = fill_list(poland)
+    if finished_countries[10]:
+        estonia = fill_list(estonia)
+    if finished_countries[19]:
+        latvia = fill_list(latvia)
+    if finished_countries[21]:
+        lithuania = fill_list(lithuania)
+    if finished_countries[3]:
+        belarus = fill_list(belarus)
     if finished_countries[33]:
         russia = fill_list(russia)
 
@@ -929,21 +964,21 @@ def europe_map(finished_countries):
     print(f':::::::::::::::::::::::::::::::::{norway[10]}{sweden[8]}@:::%{finland[10]}*@: =:::{russia[20]}')
     print(f':::::::::::::::::::::::::::::::{norway[11]}{sweden[9]}:::::{finland[11]}:{russia[21]}:{russia[22]}')
     print(f':::::::::::::::::::::::@:::::::@{norway[12]}{sweden[10]}::::::{finland[12]}::::{russia[23]}{russia[24]}')
-    print(f'::::::::::::::::::::::::::::::::{norway[13]}{sweden[11]}::::::   %    @{russia[25]}')
-    print(f'::::::::::::::::{uk[0]}:{uk[1]}:::::::::::{norway[14]}@@ :{sweden[12]}::::::+:         {russia[26]}')
-    print(f'::::::::::::::::{uk[2]}:::::::::::::{norway[15]}:::{sweden[13]}:::::::::               {russia[27]}')
-    print(f'::::::::::::::::@{uk[3]}:::::::::::::::{denmark[0]}::{sweden[14]}@: :::%                   {russia[28]}')
-    print(f':::::::::::::::@@{uk[4]}@::::::::::::::@@{denmark[1]}:::{sweden[15]}@:::::       @             {russia[29]}')
-    print(f'::::::::::::{uk[5]}={uk[6]}:::::::::::::{denmark[2]}:={sweden[16]}:::::::::      @               {russia[30]}')
-    print(f':::::::::{uk[7]}{ireland[0]}:::@{uk[8]}:::::::::::::{denmark[3]}:::::::::::@:=                @     {russia[31]}:')
-    print(f':::::::::@{ireland[1]}=::::{uk[9]}:::::::::::={germany[0]}:@ :::                                  {russia[32]}::::')
-    print(f'::::::::@{ireland[2]}:::{uk[10]}:::::::{netherlands[0]}{germany[1]}                             =    *@{russia[33]}:::::')
-    print(f':::::::::::::::{uk[11]}::::{netherlands[1]}{germany[2]}                                      {russia[34]}:::::')
-    print(f':::::::::::::::@{uk[12]}::::{belgium[0]}@{germany[3]}                                     {russia[35]}::::::')
-    print(f'::::::::::::::::@:::::::{france[0]}{belgium[1]}@{germany[4]}@                                    :{russia[36]}::::::')
-    print(f'::::::::::::::::::::::@{france[1]}{germany[5]}@                                      :{russia[37]}::::')
-    print(f'::::::::::::::{france[2]}::{france[3]}{germany[6]}        =                           ::::{russia[38]}::')
-    print(f':::::::::::::::@{france[4]}{germany[7]}                           :: @  ::@:{russia[39]}')
+    print(f'::::::::::::::::::::::::::::::::{norway[13]}{sweden[11]}::::::{estonia[0]}@{russia[25]}')
+    print(f'::::::::::::::::{uk[0]}:{uk[1]}:::::::::::{norway[14]}@@ :{sweden[12]}::::::+:{estonia[1]}{russia[26]}')
+    print(f'::::::::::::::::{uk[2]}:::::::::::::{norway[15]}:::{sweden[13]}:::::::::{latvia[0]}{russia[27]}')
+    print(f'::::::::::::::::@{uk[3]}:::::::::::::::{denmark[0]}::{sweden[14]}@: :::%{latvia[1]}{belarus[0]}{russia[28]}')
+    print(f':::::::::::::::@@{uk[4]}@::::::::::::::@@{denmark[1]}:::{sweden[15]}@:::::{lithuania[0]}@{belarus[1]}{russia[29]}')
+    print(f'::::::::::::{uk[5]}={uk[6]}:::::::::::::{denmark[2]}:={sweden[16]}:::::::::{lithuania[1]}@{belarus[2]}{russia[30]}')
+    print(f':::::::::{uk[7]}{ireland[0]}:::@{uk[8]}:::::::::::::{denmark[3]}:::::::::::@:={russia[43]}{belarus[3]}@     {russia[31]}:')
+    print(f':::::::::@{ireland[1]}=::::{uk[9]}:::::::::::={germany[0]}:@ :::{poland[0]}                      {russia[32]}::::')
+    print(f'::::::::@{ireland[2]}:::{uk[10]}:::::::{netherlands[0]}{germany[1]}{poland[1]}                =    *@{russia[33]}:::::')
+    print(f':::::::::::::::{uk[11]}::::{netherlands[1]}{germany[2]}{poland[2]}                         {russia[34]}:::::')
+    print(f':::::::::::::::@{uk[12]}::::{belgium[0]}@{germany[3]}{poland[3]}                        {russia[35]}::::::')
+    print(f'::::::::::::::::@:::::::{france[0]}{belgium[1]}@{germany[4]}@{poland[4]}                        :{russia[36]}::::::')
+    print(f'::::::::::::::::::::::@{france[1]}{germany[5]}@{czechia[0]}                               :{russia[37]}::::')
+    print(f'::::::::::::::{france[2]}::{france[3]}{germany[6]}{czechia[1]}=                           ::::{russia[38]}::')
+    print(f':::::::::::::::@{france[4]}{germany[7]}{czechia[2]}                      :: @  ::@:{russia[39]}')
     print(f':::::::::::::::::@{france[5]}@{germany[8]}:                        ::::    @:::::::@{russia[40]}')
     print(f'::::::::::::::::::{france[6]}{switzerland[0]}                           @  :::::::::::::::::::::{russia[41]}')
     print(f':::::::::::::::::::{france[7]}{switzerland[1]}@        @  :                  ::::::::::::::::::::::       {russia[42]}')
