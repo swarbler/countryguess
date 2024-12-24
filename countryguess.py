@@ -7,7 +7,7 @@ from art import *
 
 show_observer_states = True
 show_disputed_territories = True
-show_unrecognised_territories = True
+show_somaliland = True
 
 
 #* declares country lists *#
@@ -283,7 +283,7 @@ OTHER_DISPUTED_TERRITORIES = [
 ]
 
 # unrecognised territories
-UNRECOGNISED_TERRITORIES = [
+SOMALILAND = [
     'somaliland',
 ]
 
@@ -597,11 +597,11 @@ def africa_map(finished_countries):
         south_sudan = fill_list(south_sudan)
     if finished_countries[19]: # ethiopia
         ethiopia = fill_list(ethiopia)
-    if finished_countries[44] and not show_unrecognised_territories: # somalia w/ somaliland
+    if finished_countries[44] and not show_somaliland: # somalia w/ somaliland
         somalia = fill_list(somalia)
-    elif finished_countries[44] and show_unrecognised_territories: # somaliland w/o somaliland
+    elif finished_countries[44] and show_somaliland: # somaliland w/o somaliland
         somalia[2:5] = fill_list(somalia[2:5])
-    if finished_countries[55] and show_unrecognised_territories: # somaliland
+    if finished_countries[55] and show_somaliland: # somaliland
         somalia[:2] = fill_list(somalia[:2], '%')
     if finished_countries[43]: # sierra leone
         sierra_leone = fill_list(sierra_leone)
@@ -1269,8 +1269,8 @@ def quiz(param):
             else:
                 country_set.append(0) # blank entry
 
-            if show_unrecognised_territories: # adds somaliland if required
-                country_set.append(UNRECOGNISED_TERRITORIES[0])
+            if show_somaliland: # adds somaliland if required
+                country_set.append(SOMALILAND[0])
             else:
                 country_set.append(0) # blank entry
 
@@ -1407,9 +1407,10 @@ def quiz(param):
 
             input('~~> ')
         else: # tells user that is not a valid country
-            print('\033c', end='') # clear terminal
+            print(Fore.RED)
+            print('>> silly goose, that\'s not a valid country!')
 
-            call_error(userAction, 'not_a_country')
+            input('~~> ')
 
     dotdotdot()
 
@@ -1449,6 +1450,9 @@ while True:
 
     print(Fore.MAGENTA)
     print('~ options')
+    print(Fore.CYAN +  '   ~ show U.N. observer states')
+    print(Fore.GREEN + '   ~ show other disputed territories')
+    print(Fore.BLUE +  '   ~ show somaliland')
 
     print(Fore.RED)
     print('~ quit')
@@ -1485,8 +1489,8 @@ while True:
                 print(Fore.BLUE + 'this is a U.N. observer state')
             elif userInput in OTHER_DISPUTED_TERRITORIES:
                 print(Fore.YELLOW + 'this is a disputed territory')
-            elif userInput in UNRECOGNISED_TERRITORIES:
-                print(Fore.RED + 'this is an unrecognised territory')
+            elif userInput in SOMALILAND:
+                print(Fore.RED + 'this is somaliland, an unrecognised territory!')
             else:
                 print(Fore.RED + 'this is not a country or territory')
             
@@ -1494,31 +1498,19 @@ while True:
             input(Fore.CYAN + '~~> ')            
 
             print('\033c', end='') # clear terminal
-        case 'options' | 'settings':
-            print('\033c', end='') # clear terminal
+        case 'show observer states' | 'observer states' | 'show UN observer states' | 'UN observer states' | 'show U.N. observer states' | 'U.N. observer states' | 'UN observers' | 'U.N. observers'  | 'show UN observers' | 'show U.N. observers':
+            # toggles whether U.N. observer states (Vatican City and Palestine) are enabled
+            call_error(userInput, 'does_not_exist')
+        case 'show other disputed territories' | 'other disputed territories' | 'show disputed territories' | 'disputed territories' | 'show disputed' | 'disputed':
+            # toggles whether other disputed territories (Western Sahara and Kosovo) are enabled
+            call_error(userInput, 'does_not_exist')
+        case 'show somaliland' | 'somaliland':
+            # toggles whether Somaliland (a territory unrecognised by any nation) is enabled
+            call_error(userInput, 'does_not_exist')
         case 'quit':
             sys.exit(0)
         case _: # invalid input
             call_error(userInput)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
