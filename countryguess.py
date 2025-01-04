@@ -281,6 +281,10 @@ OTHER_DISPUTED_TERRITORIES = [
     'kosovo',
     'western sahara',
 ]
+OTHER_DISPUTED_TERRITORIES_ALT = {
+    'sahrawi republic': 'western sahara',
+    'sahrawi arab democratic republic': 'western sahara',
+}
 
 # unrecognised territories
 SOMALILAND = [
@@ -291,6 +295,21 @@ SOMALILAND = [
 #* declares functions *#
 
 def warning_tag(param): return Back.RED + param + Back.RESET
+
+def toggle_tag(param): return '/' if param else ' '
+
+def toggle_option(param):
+    global show_observer_states
+    global show_disputed_territories
+    global show_somaliland
+
+    match param:
+        case 'observer states':
+            show_observer_states = not show_observer_states
+        case 'disputed territories':
+            show_disputed_territories = not show_disputed_territories
+        case 'somaliland':
+            show_somaliland = not show_somaliland
 
 def call_error(param, errorType='none', minR=0, maxR=0):
     """error message"""
@@ -1266,6 +1285,7 @@ def quiz(param):
 
             if show_disputed_territories: # adds western sahara if required
                 country_set.append(OTHER_DISPUTED_TERRITORIES[1])
+                country_alt_set = country_alt_set | OTHER_DISPUTED_TERRITORIES_ALT # sahrawi arab democratic republic
             else:
                 country_set.append(0) # blank entry
 
@@ -1286,6 +1306,7 @@ def quiz(param):
 
             if show_observer_states: # adds vatican city if required
                 country_set.append(OBSERVER_STATES[1])
+                country_alt_set = country_alt_set | OBSERVER_STATES_ALT # holy see / vatican
             else:
                 country_set.append(0) # blank entry
 
@@ -1450,9 +1471,11 @@ while True:
 
     print(Fore.MAGENTA)
     print('~ options')
-    print(Fore.CYAN +  '   ~ show U.N. observer states')
-    print(Fore.GREEN + '   ~ show other disputed territories')
-    print(Fore.BLUE +  '   ~ show somaliland')
+    print(Fore.CYAN +  f'   ~ [{toggle_tag(show_observer_states)}] show U.N. observer states')
+    print(Fore.CYAN + '        (includes Vatican City and Palestine)')
+    print(Fore.GREEN + f'   ~ [{toggle_tag(show_disputed_territories)}] show other disputed territories ')
+    print(Fore.GREEN + '        (includes Western Sahara and Kosovo)')
+    print(Fore.BLUE +  f'   ~ [{toggle_tag(show_somaliland)}] show somaliland')
 
     print(Fore.RED)
     print('~ quit')
@@ -1498,15 +1521,15 @@ while True:
             input(Fore.CYAN + '~~> ')            
 
             print('\033c', end='') # clear terminal
-        case 'show observer states' | 'observer states' | 'show UN observer states' | 'UN observer states' | 'show U.N. observer states' | 'U.N. observer states' | 'UN observers' | 'U.N. observers'  | 'show UN observers' | 'show U.N. observers':
+        case 'show observer states' | 'observer states' | 'show un observer states' | 'un observer states' | 'show u.n. observer states' | 'u.n. observer states' | 'un observers' | 'u.n. observers' | 'observers' | 'show un observers' | 'show u.n. observers' | 'show observers':
             # toggles whether U.N. observer states (Vatican City and Palestine) are enabled
-            call_error(userInput, 'does_not_exist')
+            toggle_option('observer states')
         case 'show other disputed territories' | 'other disputed territories' | 'show disputed territories' | 'disputed territories' | 'show disputed' | 'disputed':
             # toggles whether other disputed territories (Western Sahara and Kosovo) are enabled
-            call_error(userInput, 'does_not_exist')
+            toggle_option('disputed territories')
         case 'show somaliland' | 'somaliland':
             # toggles whether Somaliland (a territory unrecognised by any nation) is enabled
-            call_error(userInput, 'does_not_exist')
+            toggle_option('somaliland')
         case 'quit':
             sys.exit(0)
         case _: # invalid input
