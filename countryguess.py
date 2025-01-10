@@ -6,7 +6,8 @@ from art import *
 #* declares variables *#
 
 show_observer_states = False
-show_disputed_territories = False
+show_western_sahara = False
+show_kosovo = False
 show_somaliland = False
 
 
@@ -267,29 +268,16 @@ OCEANIA = [
 ]
 
 # U.N. observer states
-OBSERVER_STATES = [
-    'palestine',
-    'vatican city',
-]
-OBSERVER_STATES_ALT = {
+VATICAN_CITY_ALT = {
     'holy see': 'vatican city',
     'vatican': 'vatican city',
 }
 
 # disputed territories
-OTHER_DISPUTED_TERRITORIES = [
-    'kosovo',
-    'western sahara',
-]
-OTHER_DISPUTED_TERRITORIES_ALT = {
+WESTERN_SAHARA_ALT = {
     'sahrawi republic': 'western sahara',
     'sahrawi arab democratic republic': 'western sahara',
 }
-
-# unrecognised territories
-SOMALILAND = [
-    'somaliland',
-]
 
 
 #* declares functions *#
@@ -300,14 +288,17 @@ def toggle_tag(param): return '/' if param else ' '
 
 def toggle_option(param):
     global show_observer_states
-    global show_disputed_territories
+    global show_western_sahara
+    global show_kosovo
     global show_somaliland
 
     match param:
         case 'observer states':
             show_observer_states = not show_observer_states
-        case 'disputed territories':
-            show_disputed_territories = not show_disputed_territories
+        case 'western sahara':
+            show_western_sahara = not show_western_sahara
+        case 'kosovo':
+            show_kosovo = not show_kosovo
         case 'somaliland':
             show_somaliland = not show_somaliland
 
@@ -370,7 +361,7 @@ def africa_map(finished_countries):
     morocco = [
         ' ',
         ' ',
-        '__' if show_disputed_territories else '  ',
+        '__' if show_western_sahara else '  ',
         '  _',
         '  ',
         '__'
@@ -584,11 +575,11 @@ def africa_map(finished_countries):
     ]
     lesotho = ['[]']
 
-    if finished_countries[34] and not show_disputed_territories: # morocco w/ western sahara
+    if finished_countries[34] and not show_western_sahara: # morocco w/ western sahara
         morocco = fill_list(morocco)
-    elif finished_countries[34] and show_disputed_territories: # morocco w/o western sahara
+    elif finished_countries[34] and show_western_sahara: # morocco w/o western sahara
         morocco[:3] = fill_list(morocco[:3])
-    if finished_countries[54] and show_disputed_territories: # western sahara
+    if finished_countries[54] and show_western_sahara: # western sahara
         morocco[3:6] = fill_list(morocco[3:6], '%')
     if finished_countries[0]: # algeria
         algeria = fill_list(algeria)
@@ -1283,16 +1274,12 @@ def quiz(param):
             country_set = AFRICA
             country_alt_set = AFRICA_ALT
 
-            if show_disputed_territories: # adds western sahara if required
-                country_set.append(OTHER_DISPUTED_TERRITORIES[1])
-                country_alt_set = country_alt_set | OTHER_DISPUTED_TERRITORIES_ALT # sahrawi arab democratic republic
-            else:
-                country_set.append(0) # blank entry
+            if show_western_sahara: # adds western sahara if required
+                country_set.append('western sahara')
+                country_alt_set = country_alt_set | WESTERN_SAHARA_ALT # sahrawi arab democratic republic
 
             if show_somaliland: # adds somaliland if required
-                country_set.append(SOMALILAND[0])
-            else:
-                country_set.append(0) # blank entry
+                country_set.append('somaliland')
 
             finished_countries = [0] * len(country_set)
             indexes_on_map = AFRICA_INDEXES_ON_MAP
@@ -1305,15 +1292,13 @@ def quiz(param):
             country_alt_set = EUROPE_ALT
 
             if show_observer_states: # adds vatican city if required
-                country_set.append(OBSERVER_STATES[1])
-                country_alt_set = country_alt_set | OBSERVER_STATES_ALT # holy see / vatican
+                country_set.append('vatican city')
+                country_alt_set = country_alt_set | VATICAN_CITY_ALT # holy see / vatican
             else:
                 country_set.append(0) # blank entry
 
-            if show_disputed_territories: # adds kosovo if required
-                country_set.append(OTHER_DISPUTED_TERRITORIES[0])
-            else:
-                country_set.append(0) # blank entry
+            if show_kosovo: # adds kosovo if required
+                country_set.append('kosovo')
 
             finished_countries = [0] * len(country_set)
             indexes_on_map = EUROPE_INDEXES_ON_MAP
@@ -1472,9 +1457,9 @@ while True:
     print(Fore.MAGENTA)
     print('~ options')
     print(Fore.CYAN +  f'   ~ [{toggle_tag(show_observer_states)}] show U.N. observer states')
-    print(Fore.CYAN + '        (includes Vatican City and Palestine)')
-    print(Fore.GREEN + f'   ~ [{toggle_tag(show_disputed_territories)}] show other disputed territories ')
-    print(Fore.GREEN + '        (includes Western Sahara and Kosovo)')
+    print(Fore.CYAN + '        (Vatican City and Palestine)')
+    print(Fore.GREEN + f'   ~ [{toggle_tag(show_western_sahara)}] show western sahara')
+    print(Fore.GREEN + f'   ~ [{toggle_tag(show_kosovo)}] show kosovo')
     print(Fore.BLUE +  f'   ~ [{toggle_tag(show_somaliland)}] show somaliland')
 
     print(Fore.RED)
@@ -1508,12 +1493,12 @@ while True:
                 print(Fore.GREEN + 'this country is in south america')
             elif userInput in OCEANIA:
                 print(Fore.BLUE + 'this country is in oceania')
-            elif userInput in OBSERVER_STATES or userInput in OBSERVER_STATES_ALT:
+            elif userInput == 'vatican city' or userInput == 'vatican' or userInput == 'holy see' or userInput == 'palestine' or userInput in VATICAN_CITY_ALT:
                 print(Fore.BLUE + 'this is a U.N. observer state')
-            elif userInput in OTHER_DISPUTED_TERRITORIES:
+            elif userInput == 'western sahara' or userInput == 'kosovo' or userInput in WESTERN_SAHARA_ALT:
                 print(Fore.YELLOW + 'this is a disputed territory')
-            elif userInput in SOMALILAND:
-                print(Fore.RED + 'this is somaliland, an unrecognised territory!')
+            elif userInput == 'somaliland':
+                print(Fore.RED + 'this is somaliland, a "country" that is unrecognised by any U.N. member state')
             else:
                 print(Fore.RED + 'this is not a country or territory')
             
@@ -1524,11 +1509,14 @@ while True:
         case 'show observer states' | 'observer states' | 'show un observer states' | 'un observer states' | 'show u.n. observer states' | 'u.n. observer states' | 'un observers' | 'u.n. observers' | 'observers' | 'show un observers' | 'show u.n. observers' | 'show observers':
             # toggles whether U.N. observer states (Vatican City and Palestine) are enabled
             toggle_option('observer states')
-        case 'show other disputed territories' | 'other disputed territories' | 'show disputed territories' | 'disputed territories' | 'show disputed' | 'disputed':
-            # toggles whether other disputed territories (Western Sahara and Kosovo) are enabled
-            toggle_option('disputed territories')
+        case 'show western sahara' | 'western sahara' | 'show sahrawi republic' | 'sahrawi republic' | 'show sahrawi arab democratic republic' | 'sahrawi arab democratic republic':
+            # toggles whether Western Sahara (a disputed territory) is enabled
+            toggle_option('western sahara')
+        case 'show kosovo' | 'kosovo':
+            # toggles whether Kosovo (a disputed territory) is enabled
+            toggle_option('kosovo')
         case 'show somaliland' | 'somaliland':
-            # toggles whether Somaliland (a territory unrecognised by any nation) is enabled
+            # toggles whether Somaliland (a territory unrecognised by any U.N. member state) is enabled
             toggle_option('somaliland')
         case 'quit':
             sys.exit(0)
