@@ -1277,9 +1277,13 @@ def quiz(param):
             if show_western_sahara: # adds western sahara if required
                 country_set.append('western sahara')
                 country_alt_set = country_alt_set | WESTERN_SAHARA_ALT # sahrawi arab democratic republic
+            else:
+                country_set.append(0) # blank entry
 
             if show_somaliland: # adds somaliland if required
                 country_set.append('somaliland')
+            else:
+                country_set.append(0) # blank entry
 
             finished_countries = [0] * len(country_set)
             indexes_on_map = AFRICA_INDEXES_ON_MAP
@@ -1299,6 +1303,8 @@ def quiz(param):
 
             if show_kosovo: # adds kosovo if required
                 country_set.append('kosovo')
+            else:
+                country_set.append(0) # blank entry
 
             finished_countries = [0] * len(country_set)
             indexes_on_map = EUROPE_INDEXES_ON_MAP
