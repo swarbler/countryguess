@@ -828,11 +828,15 @@ def europe_map(finished_countries):
         '        ',
         '          ',
     ]
+    austria = [
+        '     ',
+        '     ',
+    ]
     czechia = [
         '       ',
         '        ',
-        '     ',
     ]
+    slovakia = []
     switzerland = ['       ', '    ']
     italy = [
         '       ',
@@ -855,6 +859,7 @@ def europe_map(finished_countries):
         '             ',
         '             ',
         '            ',
+        '        ',
     ]
     estonia = ['   %    ', '         ']
     latvia = ['           ', '             ']
@@ -865,6 +870,14 @@ def europe_map(finished_countries):
         '               ',
         '           ',
         '             ',
+    ]
+    ukraine = [
+        '     ',
+        '                      ',
+        '                =    *',
+        '                         ',
+        '                        ',
+        '                        ',
     ]
     russia = [
         '                               ',
@@ -913,49 +926,55 @@ def europe_map(finished_countries):
         '     ', # kaliningrad
     ]
 
-    if finished_countries[16]:
+    if finished_countries[16]: # iceland
         iceland = fill_list(iceland)
-    if finished_countries[29]:
+    if finished_countries[29]: # norway
         norway = fill_list(norway)
-    if finished_countries[39]:
+    if finished_countries[39]: # sweden
         sweden = fill_list(sweden)
-    if finished_countries[11]:
+    if finished_countries[11]: # finland
         finland = fill_list(finland)
-    if finished_countries[9]:
+    if finished_countries[9]: # denmark
         denmark = fill_list(denmark)
-    if finished_countries[42]:
+    if finished_countries[42]: # united kingdom
         uk = fill_list(uk)
-    if finished_countries[17]:
+    if finished_countries[17]: # ireland
         ireland = fill_list(ireland)
-    if finished_countries[38]:
+    if finished_countries[38]: # spain
         spain = fill_list(spain)
-    if finished_countries[31]:
+    if finished_countries[31]: # portugal
         portugal = fill_list(portugal)
-    if finished_countries[27]:
+    if finished_countries[27]: # netherlands
         netherlands = fill_list(netherlands)
-    if finished_countries[4]:
+    if finished_countries[4]: # belgium
         belgium = fill_list(belgium)
-    if finished_countries[12]:
+    if finished_countries[12]: # france
         france = fill_list(france)
-    if finished_countries[13]:
+    if finished_countries[13]: # germany
         germany = fill_list(germany)
-    if finished_countries[8]:
+    if finished_countries[2]: # austria
+        austria = fill_list(austria)
+    if finished_countries[8]: # czechia
         czechia = fill_list(czechia)
-    if finished_countries[40]:
+    if finished_countries[36]: # slovakia
+        slovakia = fill_list(slovakia)
+    if finished_countries[40]: # switzerland
         switzerland = fill_list(switzerland)
-    if finished_countries[18]:
+    if finished_countries[18]: # italy
         italy = fill_list(italy)
-    if finished_countries[30]:
+    if finished_countries[30]: # poland
         poland = fill_list(poland)
-    if finished_countries[10]:
+    if finished_countries[10]: # estonia
         estonia = fill_list(estonia)
-    if finished_countries[19]:
+    if finished_countries[19]: # latvia
         latvia = fill_list(latvia)
-    if finished_countries[21]:
+    if finished_countries[21]: # lithuania
         lithuania = fill_list(lithuania)
-    if finished_countries[3]:
+    if finished_countries[3]: # belarus
         belarus = fill_list(belarus)
-    if finished_countries[33]:
+    if finished_countries[41]: # ukraine
+        ukraine = fill_list(ukraine)
+    if finished_countries[33]: # russia
         russia = fill_list(russia)
 
     print(Fore.MAGENTA, end='')
@@ -980,16 +999,16 @@ def europe_map(finished_countries):
     print(f'::::::::::::::::@{uk[3]}:::::::::::::::{denmark[0]}::{sweden[14]}@: :::%{latvia[1]}{belarus[0]}{russia[28]}')
     print(f':::::::::::::::@@{uk[4]}@::::::::::::::@@{denmark[1]}:::{sweden[15]}@:::::{lithuania[0]}@{belarus[1]}{russia[29]}')
     print(f'::::::::::::{uk[5]}={uk[6]}:::::::::::::{denmark[2]}:={sweden[16]}:::::::::{lithuania[1]}@{belarus[2]}{russia[30]}')
-    print(f':::::::::{uk[7]}{ireland[0]}:::@{uk[8]}:::::::::::::{denmark[3]}:::::::::::@:={russia[43]}{belarus[3]}@     {russia[31]}:')
-    print(f':::::::::@{ireland[1]}=::::{uk[9]}:::::::::::={germany[0]}:@ :::{poland[0]}                      {russia[32]}::::')
-    print(f'::::::::@{ireland[2]}:::{uk[10]}:::::::{netherlands[0]}{germany[1]}{poland[1]}                =    *@{russia[33]}:::::')
-    print(f':::::::::::::::{uk[11]}::::{netherlands[1]}{germany[2]}{poland[2]}                         {russia[34]}:::::')
-    print(f':::::::::::::::@{uk[12]}::::{belgium[0]}@{germany[3]}{poland[3]}                        {russia[35]}::::::')
-    print(f'::::::::::::::::@:::::::{france[0]}{belgium[1]}@{germany[4]}@{poland[4]}                        :{russia[36]}::::::')
-    print(f'::::::::::::::::::::::@{france[1]}{germany[5]}@{czechia[0]}                               :{russia[37]}::::')
-    print(f'::::::::::::::{france[2]}::{france[3]}{germany[6]}{czechia[1]}=                           ::::{russia[38]}::')
-    print(f':::::::::::::::@{france[4]}{germany[7]}{czechia[2]}                      :: @  ::@:{russia[39]}')
-    print(f':::::::::::::::::@{france[5]}@{germany[8]}:                        ::::    @:::::::@{russia[40]}')
+    print(f':::::::::{uk[7]}{ireland[0]}:::@{uk[8]}:::::::::::::{denmark[3]}:::::::::::@:={russia[43]}{belarus[3]}@{ukraine[0]}{russia[31]}:')
+    print(f':::::::::@{ireland[1]}=::::{uk[9]}:::::::::::={germany[0]}:@ :::{poland[0]}{ukraine[1]}{russia[32]}::::')
+    print(f'::::::::@{ireland[2]}:::{uk[10]}:::::::{netherlands[0]}{germany[1]}{poland[1]}{ukraine[2]}@{russia[33]}:::::')
+    print(f':::::::::::::::{uk[11]}::::{netherlands[1]}{germany[2]}{poland[2]}{ukraine[3]}{russia[34]}:::::')
+    print(f':::::::::::::::@{uk[12]}::::{belgium[0]}@{germany[3]}{poland[3]}{ukraine[4]}{russia[35]}::::::')
+    print(f'::::::::::::::::@:::::::{france[0]}{belgium[1]}@{germany[4]}@{poland[4]}{ukraine[5]}:{russia[36]}::::::')
+    print(f'::::::::::::::::::::::@{france[1]}{germany[5]}@{czechia[0]}{poland[5]}                       :{russia[37]}::::')
+    print(f'::::::::::::::{france[2]}::{france[3]}{germany[6]}{czechia[1]}=                       ::::{russia[38]}::')
+    print(f':::::::::::::::@{france[4]}{germany[7]}{austria[0]}                      :: @  ::@:{russia[39]}')
+    print(f':::::::::::::::::@{france[5]}@{germany[8]}:{austria[1]}                   ::::    @:::::::@{russia[40]}')
     print(f'::::::::::::::::::{france[6]}{switzerland[0]}                           @  :::::::::::::::::::::{russia[41]}')
     print(f':::::::::::::::::::{france[7]}{switzerland[1]}@        @  :                  ::::::::::::::::::::::       {russia[42]}')
     print(f'::::::::::::::::::{france[8]}{italy[0]}:: :            %          :::::::::::::::::::              ')
@@ -1056,11 +1075,11 @@ def north_america_map(finished_countries):
         '       ',
     ]
 
-    if finished_countries[4]:
+    if finished_countries[4]: # canada
         canada = fill_list(canada)
-    if finished_countries[22]:
+    if finished_countries[22]: # united states of america
         usa = fill_list(usa)
-    if finished_countries[15]:
+    if finished_countries[15]: # mexico
         mexico = fill_list(mexico)
 
     print(Fore.YELLOW, end='')
@@ -1197,11 +1216,11 @@ def oceania_map(finished_countries):
         '   @',
     ]
 
-    if finished_countries[8]:
+    if finished_countries[8]: # papua new guinea
         papua_new_guinea = fill_list(papua_new_guinea)
-    if finished_countries[0]:
+    if finished_countries[0]: # australia
         australia = fill_list(australia)
-    if finished_countries[6]:
+    if finished_countries[6]: # new zealand
         new_zealand = fill_list(new_zealand)
 
     print(Fore.BLUE, end='')
