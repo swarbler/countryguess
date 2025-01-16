@@ -878,6 +878,12 @@ def europe_map(finished_countries):
         '                         ',
         '                        ',
         '                        ',
+        '                     ',
+        '               ',
+        '          ',
+        '  ',
+        '        ',
+        '    ',
     ]
     russia = [
         '                               ',
@@ -1005,10 +1011,10 @@ def europe_map(finished_countries):
     print(f':::::::::::::::{uk[11]}::::{netherlands[1]}{germany[2]}{poland[2]}{ukraine[3]}{russia[34]}:::::')
     print(f':::::::::::::::@{uk[12]}::::{belgium[0]}@{germany[3]}{poland[3]}{ukraine[4]}{russia[35]}::::::')
     print(f'::::::::::::::::@:::::::{france[0]}{belgium[1]}@{germany[4]}@{poland[4]}{ukraine[5]}:{russia[36]}::::::')
-    print(f'::::::::::::::::::::::@{france[1]}{germany[5]}@{czechia[0]}{poland[5]}                       :{russia[37]}::::')
-    print(f'::::::::::::::{france[2]}::{france[3]}{germany[6]}{czechia[1]}=                       ::::{russia[38]}::')
-    print(f':::::::::::::::@{france[4]}{germany[7]}{austria[0]}                      :: @  ::@:{russia[39]}')
-    print(f':::::::::::::::::@{france[5]}@{germany[8]}:{austria[1]}                   ::::    @:::::::@{russia[40]}')
+    print(f'::::::::::::::::::::::@{france[1]}{germany[5]}@{czechia[0]}{poland[5]}  {ukraine[6]}:{russia[37]}::::')
+    print(f'::::::::::::::{france[2]}::{france[3]}{germany[6]}{czechia[1]}=        {ukraine[7]}::::{russia[38]}::')
+    print(f':::::::::::::::@{france[4]}{germany[7]}{austria[0]}           {ukraine[8]}:::@{ukraine[9]}::@:{russia[39]}')
+    print(f':::::::::::::::::@{france[5]}@{germany[8]}:{austria[1]}           {ukraine[10]}::::{ukraine[11]}@:::::::@{russia[40]}')
     print(f'::::::::::::::::::{france[6]}{switzerland[0]}                           @  :::::::::::::::::::::{russia[41]}')
     print(f':::::::::::::::::::{france[7]}{switzerland[1]}@        @  :                  ::::::::::::::::::::::       {russia[42]}')
     print(f'::::::::::::::::::{france[8]}{italy[0]}:: :            %          :::::::::::::::::::              ')
