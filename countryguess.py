@@ -1448,13 +1448,13 @@ while True:
     print('Choose an option:')
 
     print(Fore.GREEN)
-    print('~ countries of the world')
+    print('~ countries of the world (not completed)')
     print('~ continents')
     print(Fore.RED +     '   ~ africa')
-    print(Fore.CYAN +    '   ~ asia')
-    print(Fore.MAGENTA + '   ~ europe')
+    print(Fore.CYAN +    '   ~ asia (not completed)')
+    print(Fore.MAGENTA + '   ~ europe (partially completed)')
     print(Fore.YELLOW +  '   ~ north america')
-    print(Fore.GREEN +   '   ~ south america')
+    print(Fore.GREEN +   '   ~ south america (partially completed)')
     print(Fore.BLUE +    '   ~ oceania')
 
     print(Fore.YELLOW)
