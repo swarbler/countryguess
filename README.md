@@ -7,6 +7,7 @@ a fun little program where you try to guess the countries of the world, and coun
 ## Feature List
 
 ![main menu](/screenshots/europe-2.png)
+
 - quiz yourself on the countries on the following continents:
     - africa
     - europe *(partially completed)*
@@ -16,6 +17,7 @@ a fun little program where you try to guess the countries of the world, and coun
 - ability to enable and disable disputed territories 
 - ASCII art map fills in with each country you type in
     - *excl. countries that are too small to be shown in the ASCII map*
+
 ![main menu](/screenshots/north-america.png)
 
 ### Coming Soon
