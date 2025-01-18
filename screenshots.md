@@ -1,0 +1,7 @@
+![main menu](./screenshots/main-menu.png)
+![africa 1](./screenshots/africa-1.png)
+![africa 2](./screenshots/africa-2.png)
+![europe 1](./screenshots/europe-1.png)
+![europe 2](./screenshots/europe-2.png)
+![north america](./screenshots/north-america.png)
+![oceania](./screenshots/oceania.png)
