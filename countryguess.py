@@ -1,4 +1,4 @@
-import time, random, sys, datetime
+import time, random, sys, math
 from colorama import Fore, Back
 from art import *
 
@@ -1297,7 +1297,7 @@ def quiz(param):
     GIVEUP_COMMANDS = ['i give up', 'give up', 'giveup', 'forfeit', 'surrender', 'exit', 'quit', 'i quit', 'i hate countryguess']
 
     # time
-    start_time = datetime.datetime.now()
+    start_time = time.time()
 
     match param:
         case 'africa':
@@ -1463,14 +1463,15 @@ def quiz(param):
 
             input('~~> ')
 
-    end_time = datetime.datetime.now()
+    end_time = time.time()
+    time_elapsed = end_time - start_time
 
     dotdotdot()
 
     # tells user final score
     print(Fore.MAGENTA)
     print(f'you got {len(listed_countries)}/{countries_count} of the countries of {param}!') # shows how many countries you have guessed correctly
-    print(f'time taken: {end_time.hour-start_time.hour} hours, {end_time.minute-start_time.minute} minutes, and {end_time.second-start_time.second} seconds')
+    print(f'time taken: {math.floor(time_elapsed / 60)} minutes and {math.floor(time_elapsed % 60)} seconds')
 
     # waits for user to exit
     input('~~> ')
