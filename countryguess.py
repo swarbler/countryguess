@@ -1465,13 +1465,16 @@ def quiz(param):
 
     end_time = time.time()
     time_elapsed = end_time - start_time
+    hours_elapsed = math.floor(time_elapsed / 3600)
+    minutes_elapsed = math.floor(time_elapsed / 60) - (hours_elapsed * 60) # minutes only go up to 59, never 60 or above
+    seconds_elapsed = math.floor(time_elapsed % 60) # seconds only go up to 59, never 60 or above
 
     dotdotdot()
 
     # tells user final score
     print(Fore.MAGENTA)
     print(f'you got {len(listed_countries)}/{countries_count} of the countries of {param}!') # shows how many countries you have guessed correctly
-    print(f'time taken: {math.floor(time_elapsed / 60)} minutes and {math.floor(time_elapsed % 60)} seconds')
+    print(f'time taken: {hours_elapsed} hours {minutes_elapsed} minutes and {seconds_elapsed} seconds')
 
     # waits for user to exit
     input('~~> ')
