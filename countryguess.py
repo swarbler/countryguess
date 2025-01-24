@@ -1294,7 +1294,7 @@ def quiz(param):
     country_alt_set = []
 
     # constants
-    GIVEUP_COMMANDS = ['i give up', 'give up', 'giveup', 'forfeit', 'surrender', 'exit', 'quit', 'i quit', 'i hate countryguess', 'finish game', 'finish', 'end game', 'end', 'forfeit game', 'forfeit', 'i forfeit']
+    GIVEUP_COMMANDS = ['i give up', 'give up', 'giveup', 'i giveup', 'i surrender', 'surrender', 'exit game', 'exit', 'quit game', 'quit', 'i quit', 'i hate countryguess', 'finish game', 'finish', 'end game', 'end', 'forfeit game', 'forfeit', 'i forfeit']
 
     # time
     start_time = time.time()
