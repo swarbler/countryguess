@@ -175,7 +175,7 @@ EUROPE = [
     'latvia',
     'liechtenstein',
     'lithuania',
-    'luxeumbourg',
+    'luxembourg',
     'malta',
     'moldova',
     'monaco',
@@ -1286,6 +1286,7 @@ def quiz(param):
     """country quiz"""
     # declares variables
     end_game = False
+    countries_count = 0
 
     # declares lists
     indexes_on_map = []
@@ -1302,15 +1303,18 @@ def quiz(param):
         case 'africa':
             country_set = AFRICA
             country_alt_set = AFRICA_ALT
+            countries_count = len(country_set)
 
             if show_western_sahara: # adds western sahara if required
                 country_set.append('western sahara')
                 country_alt_set = country_alt_set | WESTERN_SAHARA_ALT # sahrawi arab democratic republic
+                countries_count += 1
             else:
                 country_set.append(0) # blank entry
 
             if show_somaliland: # adds somaliland if required
                 country_set.append('somaliland')
+                countries_count += 1
             else:
                 country_set.append(0) # blank entry
 
@@ -1323,15 +1327,18 @@ def quiz(param):
         case 'europe':
             country_set = EUROPE
             country_alt_set = EUROPE_ALT
+            countries_count = len(country_set)
 
             if show_observer_states: # adds vatican city if required
                 country_set.append('vatican city')
                 country_alt_set = country_alt_set | VATICAN_CITY_ALT # holy see / vatican
+                countries_count += 1
             else:
                 country_set.append(0) # blank entry
 
             if show_kosovo: # adds kosovo if required
                 country_set.append('kosovo')
+                countries_count += 1
             else:
                 country_set.append(0) # blank entry
 
@@ -1340,18 +1347,21 @@ def quiz(param):
         case 'north america':
             country_set = NORTH_AMERICA
             country_alt_set = NORTH_AMERICA_ALT
+            countries_count = len(country_set)
 
             finished_countries = [0] * len(country_set)
             indexes_on_map = NORTH_AMERICA_INDEXES_ON_MAP
         case 'south america':
             country_set = SOUTH_AMERICA
             country_alt_set = {}
+            countries_count = len(country_set)
 
             finished_countries = [0] * len(country_set)
             indexes_on_map = SOUTH_AMERICA_INDEXES_ON_MAP
         case 'oceania':
             country_set = OCEANIA
             country_alt_set = {}
+            countries_count = len(country_set)
 
             finished_countries = [0] * len(country_set)
             indexes_on_map = OCEANIA_INDEXES_ON_MAP
@@ -1370,7 +1380,7 @@ def quiz(param):
                 listed_countries.append(country_set[i])
         
         # checks whether user has won
-        if len(listed_countries) == len(country_set):
+        if len(listed_countries) == countries_count:
             end_game = True
             print(Fore.MAGENTA)
             print('>> you got all the countries!')
@@ -1415,7 +1425,7 @@ def quiz(param):
                 print(f'~ {listed_countries[-1]} (not shown on map)')
         
         print(Fore.MAGENTA)
-        print(f'{len(listed_countries)}/{len(country_set)}') # shows how many countries you have guessed correctly
+        print(f'{len(listed_countries)}/{countries_count}') # shows how many countries you have guessed correctly
         
         print(Fore.YELLOW)
         userAction = input('~~> ')
@@ -1459,7 +1469,7 @@ def quiz(param):
 
     # tells user final score
     print(Fore.MAGENTA)
-    print(f'you got {len(listed_countries)}/{len(country_set)} of the countries of {param}!') # shows how many countries you have guessed correctly
+    print(f'you got {len(listed_countries)}/{countries_count} of the countries of {param}!') # shows how many countries you have guessed correctly
     print(f'time taken: {end_time.hour-start_time.hour} hours, {end_time.minute-start_time.minute} minutes, and {end_time.second-start_time.second} seconds')
 
     # waits for user to exit
