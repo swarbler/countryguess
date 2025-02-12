@@ -303,6 +303,8 @@ def toggle_option(param):
         case 'somaliland':
             show_somaliland = not show_somaliland
 
+    print('\033c', end='') # clear terminal
+
 def call_error(param, errorType='none', minR=0, maxR=0):
     """error message"""
 
