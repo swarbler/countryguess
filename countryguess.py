@@ -19,7 +19,7 @@ enable_notice_on_already_guessed = True
 # list of indexes of all countries and territories on map
 AFRICA_INDEXES_ON_MAP = [34, 54, 0, 50, 28, 15, 32, 41, 31, 37, 38, 9, 47, 46, 19, 44, 55, 43, 27, 12, 23, 49, 2, 22, 7, 8, 25, 20, 11, 14, 48, 1, 52, 29, 35, 36, 3, 53, 26, 45]
 ASIA_INDEXES_ON_MAP = []
-EUROPE_INDEXES_ON_MAP = [16, 29, 39, 11, 9, 42, 17, 38, 31, 27, 4, 12, 13, 2, 8, 36, 40, 18, 30, 10, 19, 21, 3, 41,33]
+EUROPE_INDEXES_ON_MAP = [16, 29, 39, 11, 9, 42, 17, 38, 31, 27, 4, 12, 13, 2, 15, 8, 36, 40, 18, 14, 7, 5, 28, 35, 6, 30, 10, 19, 21, 32, 24, 3, 41,33]
 NORTH_AMERICA_INDEXES_ON_MAP = [4, 22, 15]
 SOUTH_AMERICA_INDEXES_ON_MAP = []
 OCEANIA_INDEXES_ON_MAP = [8, 0, 6]
@@ -775,12 +775,7 @@ def europe_map(finished_countries):
         '       ',
         '  ',
     ]
-    denmark = [
-        ' ',
-        ' ',
-        '   ',
-        ' ',
-    ]
+    denmark = [' ', ' ', '   ', ' ']
     uk = [
         ' ',
         '   ',
@@ -848,16 +843,11 @@ def europe_map(finished_countries):
         '        ',
         '          ',
     ]
-    austria = [
-        '     ',
-        '     ',
-    ]
-    czechia = [
-        '       ',
-        '        ',
-    ]
-    slovakia = []
-    switzerland = ['       ', '    ']
+    austria = ['     ', '     ']
+    hungary = ['     ', '       ']
+    czechia = ['       ', '        ']
+    slovakia = ['        ', '        ']
+    switzerland = ['       ', '    @   ']
     italy = [
         '       ',
         '      ',
@@ -873,6 +863,33 @@ def europe_map(finished_countries):
         '     ',
         '  ',
     ]
+    greece = [
+        ' *   @   ', 
+        '  @  * *=', 
+        '     ', 
+        '   ', 
+        '   ', 
+        ' ', 
+        '   ',
+        ' ',
+        '  ',
+        ' ',
+        '    ',
+    ]
+    croatia = ['     @  ', '  ', ' ', ' ']
+    bosnia_and_herzegovina = ['    ', '   ', '    ']
+    albania = ['  ', '   ']
+    north_macedonia = ['  =@ ']
+    serbia = [
+        '      ',
+        '      ',
+        '       ',
+    ]
+    bulgaria = [
+        '          ',
+        '            ',
+        '        ',
+    ]
     poland = [
         '            ',
         '             ',
@@ -884,6 +901,14 @@ def europe_map(finished_countries):
     estonia = ['   %    ', '         ']
     latvia = ['      ', '       ']
     lithuania = ['       ', '      ']
+    romania = [
+        '           ', 
+        '          ',
+        '                    ',
+        '            ',
+        '          ',
+    ]
+    moldova = ['  ', '  ']
     belarus = [
         '         ',
         '             ',
@@ -980,6 +1005,8 @@ def europe_map(finished_countries):
         germany = fill_list(germany)
     if finished_countries[2]: # austria
         austria = fill_list(austria)
+    if finished_countries[15]: # hungary
+        hungary = fill_list(hungary)
     if finished_countries[8]: # czechia
         czechia = fill_list(czechia)
     if finished_countries[36]: # slovakia
@@ -988,6 +1015,20 @@ def europe_map(finished_countries):
         switzerland = fill_list(switzerland)
     if finished_countries[18]: # italy
         italy = fill_list(italy)
+    if finished_countries[14]: # greece
+        greece = fill_list(greece)
+    if finished_countries[7]: # croatia
+        croatia = fill_list(croatia)
+    if finished_countries[5]: # bosnia and herzegovina
+        bosnia_and_herzegovina = fill_list(bosnia_and_herzegovina)
+    if finished_countries[1]: # albania
+        albania = fill_list(albania)
+    if finished_countries[28]: # north macedonia
+        north_macedonia = fill_list(north_macedonia)
+    if finished_countries[35]: # serbia
+        serbia = fill_list(serbia)
+    if finished_countries[6]: # bulgaria
+        bulgaria = fill_list(bulgaria)
     if finished_countries[30]: # poland
         poland = fill_list(poland)
     if finished_countries[10]: # estonia
@@ -996,6 +1037,10 @@ def europe_map(finished_countries):
         latvia = fill_list(latvia)
     if finished_countries[21]: # lithuania
         lithuania = fill_list(lithuania)
+    if finished_countries[32]: # romania
+        romania = fill_list(romania)
+    if finished_countries[24]: # moldova
+        moldova = fill_list(moldova)
     if finished_countries[3]: # belarus
         belarus = fill_list(belarus)
     if finished_countries[41]: # ukraine
@@ -1032,23 +1077,23 @@ def europe_map(finished_countries):
     print(f':::::::::::::::@{uk[12]}::::{belgium[0]}@{germany[3]}{poland[3]}{ukraine[4]}{russia[35]}::::::')
     print(f'::::::::::::::::@:::::::{france[0]}{belgium[1]}@{germany[4]}@{poland[4]}{ukraine[5]}:{russia[36]}::::::')
     print(f'::::::::::::::::::::::@{france[1]}{germany[5]}@{czechia[0]}{poland[5]}  {ukraine[6]}:{russia[37]}::::')
-    print(f'::::::::::::::{france[2]}::{france[3]}{germany[6]}{czechia[1]}=        {ukraine[7]}::::{russia[38]}::')
-    print(f':::::::::::::::@{france[4]}{germany[7]}{austria[0]}                   {ukraine[8]}:::@{ukraine[9]}::@:{russia[39]}')
-    print(f':::::::::::::::::@{france[5]}@{germany[8]}:{austria[1]}                 {ukraine[10]}::::{ukraine[11]}@:::::::@{russia[40]}')
-    print(f'::::::::::::::::::{france[6]}{switzerland[0]}                           @  :::::::::::::::::::::{russia[41]}')
-    print(f':::::::::::::::::::{france[7]}{switzerland[1]}@        @  :                  ::::::::::::::::::::::       {russia[42]}')
-    print(f'::::::::::::::::::{france[8]}{italy[0]}:: :            %          :::::::::::::::::::              ')
-    print(f'::::+{spain[0]}:::::::{france[9]}{italy[1]}::::@                     :::::::::                   =   @ ')
-    print(f'::::{spain[1]}{france[10]}:::::{italy[2]}::::     @  =            ::::::                        @ @')
-    print(f'::::{portugal[0]}@{spain[2]}::::::::::@:%{italy[3]}:::::::@     =@                                          ')
-    print(f'::::{portugal[1]}{spain[3]}:::::::::{france[11]}:::{italy[4]}:@:::::: *   @   :*@ : @                               ')
-    print(f'::{portugal[2]}{spain[4]}::::::::::::::::::::::@{italy[5]}::::  @  * *=:::                                   ')
-    print(f'::{portugal[3]}{spain[5]}::::::::::::::={italy[6]}:::::::::{italy[7]}::=:::     ::::::                  @ @              ')
-    print(f'::{portugal[4]}{spain[6]}:::::@::::::::::{italy[8]}:::::::::::{italy[9]}::::::@   :  ::::@              :::                ')
-    print(f':::{portugal[5]}{spain[7]}::::::::::::::::::::::::::::::{italy[10]}::::::: :   : :::@::@     :::@@::=::@               ')
-    print(f'::::::{portugal[6]}{spain[8]}::::::::::::::::::::::::::{italy[11]}::::::::::::  ::::@:@:  :::::::::  ::::               ')
-    print(f':::::::::::::::::::::::::::::::::::  ::::::@{italy[12]}:::::::::::::: :::::::@::::::::::::::::               ')
-    print(f'::::::   :::::::+*                   %::::::::::::::::::::::::    ::::::::::::::::::                ')
+    print(f'::::::::::::::{france[2]}::{france[3]}{germany[6]}{czechia[1]}={slovakia[0]}{ukraine[7]}::::{russia[38]}::')
+    print(f':::::::::::::::@{france[4]}{germany[7]}{austria[0]}{slovakia[1]}{romania[0]}{moldova[0]}{ukraine[8]}:::@{ukraine[9]}::@:{russia[39]}')
+    print(f':::::::::::::::::@{france[5]}@{germany[8]}:{austria[1]}{hungary[0]}{romania[1]}{moldova[1]}{ukraine[10]}::::{ukraine[11]}@:::::::@{russia[40]}')
+    print(f'::::::::::::::::::{france[6]}{switzerland[0]}{hungary[1]}{romania[2]}@  :::::::::::::::::::::{russia[41]}')
+    print(f':::::::::::::::::::{france[7]}{switzerland[1]}{croatia[0]}:{serbia[0]}{romania[3]}::::::::::::::::::::::       {russia[42]}')
+    print(f'::::::::::::::::::{france[8]}{italy[0]}::::{croatia[1]}{bosnia_and_herzegovina[0]}{serbia[1]}%{romania[4]}:::::::::::::::::::              ')
+    print(f'::::+{spain[0]}:::::::{france[9]}{italy[1]}::::@{croatia[2]}{bosnia_and_herzegovina[1]}{serbia[2]}{bulgaria[0]}:::::::::                   =   @ ')
+    print(f'::::{spain[1]}{france[10]}:::::{italy[2]}::::{croatia[3]}{bosnia_and_herzegovina[2]}@{albania[0]}={bulgaria[1]}::::::                        @ @')
+    print(f'::::{portugal[0]}@{spain[2]}::::::::::@:%{italy[3]}:::::::@{albania[1]}{north_macedonia[0]}{bulgaria[2]}                                 ')
+    print(f'::::{portugal[1]}{spain[3]}:::::::::{france[11]}:::{italy[4]}:@::::::{greece[0]}:*@ : @                               ')
+    print(f'::{portugal[2]}{spain[4]}::::::::::::::::::::::@{italy[5]}::::{greece[1]}:::                                   ')
+    print(f'::{portugal[3]}{spain[5]}::::::::::::::={italy[6]}:::::::::{italy[7]}::=:::{greece[2]}::::::                  @ @              ')
+    print(f'::{portugal[4]}{spain[6]}:::::@::::::::::{italy[8]}:::::::::::{italy[9]}::::::@{greece[3]}:{greece[4]}::::@              :::                ')
+    print(f':::{portugal[5]}{spain[7]}::::::::::::::::::::::::::::::{italy[10]}:::::::{greece[4]}:{greece[5]}:{greece[6]}:::@::@     :::@@::=::@               ')
+    print(f'::::::{portugal[6]}{spain[8]}::::::::::::::::::::::::::{italy[11]}::::::::::::{greece[7]}::::@:@:  :::::::::  ::::               ')
+    print(f':::::::::::::::::::::::::::::::::::  ::::::@{italy[12]}::::::::::::::{greece[8]}:::::::@::::::::::::::::               ')
+    print(f'::::::   :::::::+*                   %::::::::::::::::::::::::{greece[9]}::::::::::::::::::                ')
     print(f'::::                                  ::::::::::::::::::::::::::::::::::::::::::::::                ')
 
 def north_america_map(finished_countries):
@@ -1522,7 +1567,7 @@ while True:
     print('~ continents')
     print(Fore.RED +     '   ~ africa')
     print(Fore.CYAN +    '   ~ asia (not completed)')
-    print(Fore.MAGENTA + '   ~ europe (partially completed)')
+    print(Fore.MAGENTA + '   ~ europe')
     print(Fore.YELLOW +  '   ~ north america')
     print(Fore.GREEN +   '   ~ south america (partially completed)')
     print(Fore.BLUE +    '   ~ oceania')

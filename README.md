@@ -10,7 +10,7 @@ a fun little program where you try to guess the countries of the world, and coun
 
 - quiz yourself on the countries on the following continents:
     - africa
-    - europe *(partially completed)*
+    - europe *(almost completed)*
     - north america
     - south america *(partially completed)*
     - oceania
@@ -23,7 +23,7 @@ a fun little program where you try to guess the countries of the world, and coun
 ### Coming Soon
 
 - finish europe map
-    - *a lot of eastern europe is missing and Ukraine looks like a blob, I'll fix that later*
+    - *quite a bit of it looks weird, Romania has a big spiky part for some reason*
 - asia quiz
     - *i'm only putting it off because it's so BIG*
 - add south america map
