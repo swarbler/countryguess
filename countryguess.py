@@ -17,7 +17,7 @@ enable_notice_on_already_guessed = True
 #* declares country lists *#
 
 # list of indexes of all countries and territories on map
-AFRICA_INDEXES_ON_MAP = [34, 54, 0, 50, 28, 15, 32, 41, 31, 37, 38, 9, 47, 46, 19, 44, 55, 43, 27, 12, 23, 49, 2, 22, 7, 8, 25, 20, 11, 14, 48, 1, 52, 35, 36, 3, 53, 26, 45]
+AFRICA_INDEXES_ON_MAP = [34, 54, 0, 50, 28, 15, 32, 41, 31, 37, 38, 9, 47, 46, 19, 44, 55, 43, 27, 12, 23, 49, 2, 22, 7, 8, 25, 20, 11, 14, 48, 1, 52, 29, 35, 36, 3, 53, 26, 45]
 ASIA_INDEXES_ON_MAP = []
 EUROPE_INDEXES_ON_MAP = [16, 29, 39, 11, 9, 42, 17, 38, 31, 27, 4, 12, 13, 2, 8, 36, 40, 18, 30, 10, 19, 21, 3, 41,33]
 NORTH_AMERICA_INDEXES_ON_MAP = [4, 22, 15]
@@ -560,6 +560,12 @@ def africa_map(finished_countries):
         '  ',
         '_',
     ]
+    madagascar = [
+        ' ',
+        '   ',
+        '   ',
+        '___'
+    ]
     namibia = [
         '      ---',
         '     ',
@@ -659,6 +665,8 @@ def africa_map(finished_countries):
         zambia = fill_list(zambia)
     if finished_countries[35]: # mozambique
         mozambique = fill_list(mozambique)
+    if finished_countries[29]: # madagascar
+        madagascar = fill_list(madagascar)
     if finished_countries[36]: # namibia
         namibia = fill_list(namibia)
     if finished_countries[3]: # botswana
@@ -693,11 +701,11 @@ def africa_map(finished_countries):
     print(f'                       \\{rep_of_congo[2]}\'{dem_rep_of_congo[2]}|{tanzania[3]}/')
     print(f'                       |{angola[0]}\\{dem_rep_of_congo[3]}|{tanzania[4]}|')
     print(f'                       |{angola[1]}|{dem_rep_of_congo[4]}|{zambia[0]}\'{tanzania[5]}|')
-    print(f'                       |{angola[2]}|{dem_rep_of_congo[5]}|{zambia[1]}/{mozambique[0]}|')
-    print(f'                       /{angola[3]}|{zambia[2]}\'{mozambique[1]}|')
-    print(f'                      |{angola[4]}|{zambia[3]}\'{zimbabwe[0]}\'{mozambique[2]}/')
-    print(f'                       \\{namibia[0]}\'{botswana[0]}\\{zimbabwe[1]}/{mozambique[3]},\'')
-    print(f'                        \\{namibia[1]}|{botswana[1]}\'{south_africa[0]}\\{mozambique[4]}/')
+    print(f'                       |{angola[2]}|{dem_rep_of_congo[5]}|{zambia[1]}/{mozambique[0]}|        __')
+    print(f'                       /{angola[3]}|{zambia[2]}\'{mozambique[1]}|       _/{madagascar[0]}\\')
+    print(f'                      |{angola[4]}|{zambia[3]}\'{zimbabwe[0]}\'{mozambique[2]}/       /{madagascar[1]}|')
+    print(f'                       \\{namibia[0]}\'{botswana[0]}\\{zimbabwe[1]}/{mozambique[3]},\'        |{madagascar[2]}|')
+    print(f'                        \\{namibia[1]}|{botswana[1]}\'{south_africa[0]}\\{mozambique[4]}/          \\{madagascar[3]}/')
     print(f'                         |{namibia[2]}|{botswana[2]}\'{south_africa[1]}|/')
     print(f'                         |{namibia[3]}|{south_africa[2]}{lesotho[0]}{south_africa[3]}|')
     print(f'                          \\{namibia[4]}\'{south_africa[4]}/')
