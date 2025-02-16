@@ -1,4 +1,4 @@
-import time, random, sys, math
+import time, random, sys, math, datetime
 from colorama import Fore, Back
 from art import *
 
@@ -10,6 +10,7 @@ show_western_sahara = False
 show_kosovo = False
 show_somaliland = False
 
+enable_score_save = True
 enable_notice_on_add_country = False
 enable_notice_on_already_guessed = True
 
@@ -1538,6 +1539,13 @@ def quiz(param):
     hours_elapsed = math.floor(time_elapsed / 3600)
     minutes_elapsed = math.floor(time_elapsed / 60) - (hours_elapsed * 60) # minutes only go up to 59, never 60 or above
     seconds_elapsed = math.floor(time_elapsed % 60) # seconds only go up to 59, never 60 or above
+
+    current_time = datetime.datetime.now().strftime("%Y-%m-%d %X")
+
+    if enable_score_save:
+        f = open("scores.txt", "a")
+        f.write(f"{current_time} -> {len(listed_countries)}/{countries_count} [{hours_elapsed} hrs {minutes_elapsed} min {seconds_elapsed} sec]")
+        f.close()
 
     dotdotdot()
 
