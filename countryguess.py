@@ -19,7 +19,7 @@ enable_notice_on_already_guessed = True
 # list of indexes of all countries and territories on map
 AFRICA_INDEXES_ON_MAP = [34, 54, 0, 50, 28, 15, 32, 41, 31, 37, 38, 9, 47, 46, 19, 44, 55, 43, 27, 12, 23, 49, 2, 22, 7, 8, 25, 20, 11, 14, 48, 1, 52, 29, 35, 36, 3, 53, 26, 45]
 ASIA_INDEXES_ON_MAP = []
-EUROPE_INDEXES_ON_MAP = [16, 29, 39, 11, 9, 42, 17, 38, 31, 27, 4, 12, 13, 2, 15, 8, 36, 40, 18, 14, 7, 5, 1, 28, 35, 6, 30, 10, 19, 21, 32, 24, 3, 41,33]
+EUROPE_INDEXES_ON_MAP = [16, 29, 39, 11, 9, 42, 17, 38, 31, 27, 4, 12, 13, 2, 15, 8, 36, 40, 18, 14, 7, 5, 0, 28, 35, 6, 30, 10, 19, 21, 32, 24, 3, 41,33]
 NORTH_AMERICA_INDEXES_ON_MAP = [4, 22, 15]
 SOUTH_AMERICA_INDEXES_ON_MAP = []
 OCEANIA_INDEXES_ON_MAP = [8, 0, 6]
@@ -1021,7 +1021,7 @@ def europe_map(finished_countries):
         croatia = fill_list(croatia)
     if finished_countries[5]: # bosnia and herzegovina
         bosnia_and_herzegovina = fill_list(bosnia_and_herzegovina)
-    if finished_countries[1]: # albania
+    if finished_countries[0]: # albania
         albania = fill_list(albania)
     if finished_countries[28]: # north macedonia
         north_macedonia = fill_list(north_macedonia)
