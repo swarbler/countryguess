@@ -10,6 +10,9 @@ show_western_sahara = False
 show_kosovo = False
 show_somaliland = False
 
+enable_notice_on_add_country = False
+enable_notice_on_already_guessed = True
+
 
 #* declares country lists *#
 
@@ -292,6 +295,8 @@ def toggle_option(param):
     global show_western_sahara
     global show_kosovo
     global show_somaliland
+    global enable_notice_on_add_country
+    global enable_notice_on_already_guessed
 
     match param:
         case 'observer states':
@@ -302,6 +307,10 @@ def toggle_option(param):
             show_kosovo = not show_kosovo
         case 'somaliland':
             show_somaliland = not show_somaliland
+        case 'msg_add_country':
+            enable_notice_on_add_country = not enable_notice_on_add_country
+        case 'msg_already_guessed':
+            enable_notice_on_already_guessed = not enable_notice_on_already_guessed
 
     print('\033c', end='') # clear terminal
 
@@ -1433,26 +1442,32 @@ def quiz(param):
         userAction = input('~~> ')
 
         if userAction in listed_countries: # tells user country has already been guessed
-            print(Fore.YELLOW)
-            print('>> silly goose! you already have that country!')
-
-            input('~~> ')
-        elif userAction in country_set: # adds country
-            finished_countries[country_set.index(userAction)] = 1
-            print(Fore.GREEN)
-            print(f'>> country added: {userAction}')
-
-            input('~~> ')
-        elif userAction in country_alt_set: # checks if user inputted alternative name for country
-            if country_alt_set[userAction] in listed_countries: # tells user country has already been guessed
+            if enable_notice_on_already_guessed:
                 print(Fore.YELLOW)
                 print('>> silly goose! you already have that country!')
+
+                input('~~> ')
+        elif userAction in country_set: # adds country
+            finished_countries[country_set.index(userAction)] = 1
+            if enable_notice_on_add_country:
+                print(Fore.GREEN)
+                print(f'>> country added: {userAction}')
+
+                input('~~> ')
+        elif userAction in country_alt_set: # checks if user inputted alternative name for country
+            if country_alt_set[userAction] in listed_countries: # tells user country has already been guessed
+                if enable_notice_on_already_guessed:
+                    print(Fore.YELLOW)
+                    print('>> silly goose! you already have that country!')
+
+                    input('~~> ')
             else: # adds country
                 finished_countries[country_set.index(country_alt_set[userAction])] = 1
-                print(Fore.GREEN)
-                print(f'>> country added: {country_alt_set[userAction]}')
+                if enable_notice_on_add_country:
+                    print(Fore.GREEN)
+                    print(f'>> country added: {country_alt_set[userAction]}')
+                    input('~~> ')
 
-            input('~~> ')
         elif userAction in GIVEUP_COMMANDS: # user gives up
             end_game = True
             print(Fore.RED)
@@ -1492,8 +1507,7 @@ while True:
     print(Fore.GREEN, end='')
     tprint('countryguess', 'soft')
 
-    print(Fore.BLUE)
-    print('Choose an option:')
+    print(Fore.BLUE + 'Choose an option:')
 
     print(Fore.GREEN)
     print('~ countries of the world (not completed)')
@@ -1505,16 +1519,16 @@ while True:
     print(Fore.GREEN +   '   ~ south america (partially completed)')
     print(Fore.BLUE +    '   ~ oceania')
 
-    print(Fore.YELLOW)
-    print('~ find a country')
-
     print(Fore.MAGENTA)
-    print('~ options')
+    print('~ toggle disputed territories')
     print(Fore.CYAN +  f'   ~ [{toggle_tag(show_observer_states)}] show U.N. observer states')
     print(Fore.CYAN + '        (Vatican City and Palestine)')
     print(Fore.GREEN + f'   ~ [{toggle_tag(show_western_sahara)}] show western sahara')
     print(Fore.GREEN + f'   ~ [{toggle_tag(show_kosovo)}] show kosovo')
     print(Fore.BLUE +  f'   ~ [{toggle_tag(show_somaliland)}] show somaliland')
+    print(Fore.MAGENTA + '~ game settings')
+    print(Fore.GREEN + f'   ~ [{toggle_tag(enable_notice_on_add_country)}] print message on add country')
+    print(Fore.GREEN + f'   ~ [{toggle_tag(enable_notice_on_already_guessed)}] print message on already guessed country')
 
     print(Fore.RED)
     print('~ quit')
@@ -1572,6 +1586,12 @@ while True:
         case 'show somaliland' | 'somaliland':
             # toggles whether Somaliland (a territory unrecognised by any U.N. member state) is enabled
             toggle_option('somaliland')
+        case 'print message on add country' | 'print message add country' | 'print add country' | 'message add country' | 'add country':
+            # toggles whether message is printed when country is added
+            toggle_option('msg_add_country')
+        case 'print message on already guessed' | 'print message already guessed' | 'print already guessed' | 'message already guessed' | 'already guessed':
+            # toggles whether message is printed when country is already guessed
+            toggle_option('msg_already_guessed')
         case 'quit':
             sys.exit(0)
         case _: # invalid input
