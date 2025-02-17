@@ -343,7 +343,7 @@ def call_error(param, errorType='none', minR=0, maxR=0):
         case _:
             print(f'{err} is not a valid input. Please try again.')
     print('')
-    input('~~> ')
+    input('-x- ')
 
     print('\033c', end='') # clear terminal
 
@@ -1500,39 +1500,39 @@ def quiz(param):
                 print(Fore.YELLOW)
                 print('>> silly goose! you already have that country!')
 
-                input('~~> ')
+                input('-x- ')
         elif userAction in country_set: # adds country
             finished_countries[country_set.index(userAction)] = 1
             if enable_notice_on_add_country:
                 print(Fore.GREEN)
                 print(f'>> country added: {userAction}')
 
-                input('~~> ')
+                input('-x- ')
         elif userAction in country_alt_set: # checks if user inputted alternative name for country
             if country_alt_set[userAction] in listed_countries: # tells user country has already been guessed
                 if enable_notice_on_already_guessed:
                     print(Fore.YELLOW)
                     print('>> silly goose! you already have that country!')
 
-                    input('~~> ')
+                    input('-x- ')
             else: # adds country
                 finished_countries[country_set.index(country_alt_set[userAction])] = 1
                 if enable_notice_on_add_country:
                     print(Fore.GREEN)
                     print(f'>> country added: {country_alt_set[userAction]}')
-                    input('~~> ')
+                    input('-x- ')
 
         elif userAction in GIVEUP_COMMANDS: # user gives up
             end_game = True
             print(Fore.RED)
             print('>> You have given up')
 
-            input('~~> ')
+            input('-x- ')
         else: # tells user that is not a valid country
             print(Fore.RED)
             print('>> silly goose, that\'s not a valid country!')
 
-            input('~~> ')
+            input('-x- ')
 
     end_time = time.time()
     time_elapsed = end_time - start_time
@@ -1541,10 +1541,19 @@ def quiz(param):
     seconds_elapsed = math.floor(time_elapsed % 60) # seconds only go up to 59, never 60 or above
 
     current_time = datetime.datetime.now().strftime("%Y-%m-%d %X")
+    continentAbbrv = ""
+
+    match param:
+        case 'africa': continentAbbrv = 'AF'
+        case 'asia': continentAbbrv = 'AS'
+        case 'europe': continentAbbrv = 'EU'
+        case 'north america': continentAbbrv = 'NA'
+        case 'south america': continentAbbrv = 'SA'
+        case 'oceania': continentAbbrv = 'OC'
 
     if enable_score_save:
         f = open("scores.txt", "a")
-        f.write(f"{current_time} -> {len(listed_countries)}/{countries_count} [{hours_elapsed} hrs {minutes_elapsed} min {seconds_elapsed} sec]")
+        f.write(f"{current_time} -> QUIZ_{continentAbbrv} {len(listed_countries)}/{countries_count} [{hours_elapsed} hrs {minutes_elapsed} min {seconds_elapsed} sec]\n")
         f.close()
 
     dotdotdot()
@@ -1555,7 +1564,7 @@ def quiz(param):
     print(f'time taken: {hours_elapsed} hours {minutes_elapsed} minutes and {seconds_elapsed} seconds')
 
     # waits for user to exit
-    input('~~> ')
+    input('-x- ')
 
 def world_quiz():
     """countries of the world quiz"""
@@ -1632,7 +1641,7 @@ while True:
                 print(Fore.RED + 'this is not a country or territory')
             
             print(Fore.YELLOW)
-            input(Fore.CYAN + '~~> ')            
+            input(Fore.CYAN + '-x- ')          
 
             print('\033c', end='') # clear terminal
         case 'show observer states' | 'observer states' | 'show un observer states' | 'un observer states' | 'show u.n. observer states' | 'u.n. observer states' | 'un observers' | 'u.n. observers' | 'observers' | 'show un observers' | 'show u.n. observers' | 'show observers':
