@@ -17,6 +17,7 @@ a fun little program where you try to guess the countries of the world, and coun
 - ability to enable and disable disputed territories 
 - ASCII art map fills in with each country you type in
     - *excl. countries that are too small to be shown in the ASCII map*
+- saving your score in a scores.txt file
 
 ![main menu](/screenshots/north-america.png)
 
@@ -29,7 +30,8 @@ a fun little program where you try to guess the countries of the world, and coun
 - add south america map
     - *there's still a south america quiz, but the map doesn't get filled in*
 - countries of the world quiz
-- possibly other kinds of quizzes too? flags maybe?
+- top 10 [x thing] countries in the world quizzes (biggest, most population, etc.)
+- other kinds of quizzes like guessing flags?
 
 ## Countries and Territories included
 
