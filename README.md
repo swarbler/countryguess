@@ -2,7 +2,7 @@
 
 ![main menu](/screenshots/main-menu.png)
 
-a fun little program where you try to guess the countries of the world, and countries are slowly filled up in the ASCII art map.
+a fun little program where you try to guess the countries of the world to fill up the ASCII art map.
 
 ## Feature List
 
