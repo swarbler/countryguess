@@ -48,7 +48,7 @@ AFRICA = [
     'eswatini',
     'ethiopia',
     'gabon',
-    'gambia',
+    'the gambia',
     'ghana',
     'guinea',
     'guinea-bissau',
@@ -98,6 +98,7 @@ AFRICA_ALT = {
     'dem republic of congo': 'democratic republic of congo',
     'dem rep of congo': 'democratic republic of congo',
     'swaziland': 'eswatini',
+    'gambia': 'the gambia',
 }
 
 # asian countries
