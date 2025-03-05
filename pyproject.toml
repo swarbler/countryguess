@@ -14,9 +14,6 @@ requires-python = ">= 3.8"
 authors = [
   {name = "sbird"},
 ]
-maintainers = [
-  {name = "sbird"}
-]
 
 description = "guess the countries of the world as the ASCII map fills up"
 readme = "README.md"
