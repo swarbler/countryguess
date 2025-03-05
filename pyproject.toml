@@ -28,6 +28,3 @@ keywords = ["country", "guess", "world", "map", "countries of the world"]
 [project.urls]
 Repository = "https://github.com/swarbler/countryguess.git"
 "Bug Tracker" = "https://github.com/swarbler/countryguess/issues"
-
-[project.scripts]
-spam-cli = "spam:main_cli"
