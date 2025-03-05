@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "countryguess"
+dynamic = ["version"]
+
+dependencies = [
+  "art",
+  "colorama",
+]
+requires-python = ">= 3.8"
+authors = [
+  {name = "sbird"},
+]
+maintainers = [
+  {name = "sbird"}
+]
+
+description = "guess the countries of the world as the ASCII map fills up"
+readme = "README.md"
+
+LICENSE=MIT
+
+keywords = ["country", "guess", "world", "map", "countries of the world"]
+
+[project.urls]
+Repository = "https://github.com/swarbler/countryguess.git"
+"Bug Tracker" = "https://github.com/swarbler/countryguess/issues"
+
+[project.scripts]
+spam-cli = "spam:main_cli"
