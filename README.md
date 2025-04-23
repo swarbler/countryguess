@@ -2,6 +2,14 @@
 
 ![main menu](/screenshots/main-menu.png)
 
+# ⚠️ PROJECT MOVED TO CODEBERG ⚠️
+
+https://codeberg.org/sperchingbird/countryguess
+
+This repository has been archived and will not receive further commits. Please go to the Codeberg repo!
+
+------------------------------------------------------------------------------------------------------
+
 a fun little program where you try to guess the countries of the world to fill up the ASCII art map.
 
 ## Feature List
